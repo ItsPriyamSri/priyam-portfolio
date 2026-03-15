@@ -319,103 +319,216 @@ const TechnicalExpertise = () => (
   </SectionWrapper>
 );
 
-const Projects = () => (
-  <SectionWrapper id="projects" className="py-24 px-6 container mx-auto">
-    <div className="flex flex-col items-center mb-16">
-      <h2 className="text-4xl md:text-5xl font-outfit font-bold text-black mb-4">Engineering Projects</h2>
-      <div className="h-2 w-24 bg-[#E878A8] border-2 border-black rounded-full shadow-[2px_2px_0px_#000000]"></div>
-    </div>
+const Projects = () => {
+  const [showSandbox, setShowSandbox] = useState(false);
 
-    <motion.div 
-      variants={containerVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
-      className="grid grid-cols-1 md:grid-cols-2 gap-10"
-    >
-      {[
-        {
-          name: "CPPCloak",
-          desc: "LLVM-Based Code Obfuscator. Features C++ string encryption and a Python FastAPI bridge.",
-          tags: ["C++", "LLVM", "FastAPI", "Compiler"],
-          color: "bg-[#5BB4E5]",
-          badge: "Security"
-        },
-        {
-          name: "Project SHIELD",
-          desc: "IP Protection Platform monitoring 100+ sources. Automated DMCA generator via Gemini AI. 3rd Place @ HackCBS.",
-          tags: ["TypeScript", "FastAPI", "Gemini AI", "MongoDB"],
-          color: "bg-[#5FD974]",
-          badge: "Award Winner"
-        },
-        {
-          name: "AetherLearn",
-          desc: "AI Learning Platform with Docker containerization and scalable backend. Top 105 GSC.",
-          tags: ["Docker", "Firebase", "Node.js", "React"],
-          color: "bg-[#E878A8]",
-          badge: "Top 105"
-        },
-        {
-          name: "Saksham AI",
-          desc: "Intelligent Recommendation Platform using NLP for personalized resource discovery.",
-          tags: ["NLP", "Python", "React", "FastAPI"],
-          color: "bg-[#F7D046]",
-          badge: "AI/NLP"
-        }
-      ].map((p, idx) => (
-        <motion.div key={idx} variants={itemVariants}>
-          <BrutalistCard bgColor={p.color} className="h-full flex flex-col" hasMockup>
-            <div className="flex justify-between items-start mb-4">
-              <h3 className="text-3xl font-outfit font-bold text-black">{p.name}</h3>
-              <span className="px-3 py-1 bg-white border-2 border-black text-[10px] font-black rounded-full uppercase tracking-tighter shadow-[2px_2px_0px_#000000]">{p.badge}</span>
-            </div>
-            <p className="text-black font-jakarta font-semibold mb-6 flex-grow leading-snug">
-              {p.desc}
-            </p>
-            <div className="flex flex-wrap gap-2 mb-8">
-              {p.tags.map(t => (
-                <span key={t} className="text-[10px] font-black uppercase tracking-widest px-2 py-1 bg-white/50 border border-black rounded">{t}</span>
-              ))}
-            </div>
-            <motion.button 
-              whileHover={{ x: 2 }}
-              className="flex items-center gap-2 font-black text-black uppercase text-sm tracking-widest group"
+  const mainProjects = [
+    {
+      name: "CPPCloak",
+      desc: "LLVM-Based Code Obfuscator. Features C++ string encryption and a Python FastAPI bridge.",
+      tags: ["C++", "LLVM", "FastAPI", "Compiler"],
+      color: "bg-[#5BB4E5]",
+      badge: "Security"
+    },
+    {
+      name: "Project SHIELD",
+      desc: "IP Protection Platform monitoring 100+ sources. Automated DMCA generator via Gemini AI. 3rd Place @ HackCBS.",
+      tags: ["TypeScript", "FastAPI", "Gemini AI", "MongoDB"],
+      color: "bg-[#5FD974]",
+      badge: "Award Winner"
+    },
+    {
+      name: "AetherLearn",
+      desc: "AI Learning Platform with Docker containerization and scalable backend. Top 105 GSC.",
+      tags: ["Docker", "Firebase", "Node.js", "React"],
+      color: "bg-[#E878A8]",
+      badge: "Top 105"
+    },
+    {
+      name: "Saksham AI",
+      desc: "Intelligent Recommendation Platform using NLP for personalized resource discovery.",
+      tags: ["NLP", "Python", "React", "FastAPI"],
+      color: "bg-[#F7D046]",
+      badge: "AI/NLP"
+    }
+  ];
+
+  const sandboxProjects = [
+    {
+      name: "FluxSort",
+      desc: "Cross-platform Python automation script with a logging/revert system for intelligent file directory management.",
+      tags: ["Python", "Automation", "CLI"],
+      color: "bg-[#DDF4FD]"
+    },
+    {
+      name: "Dungeon Escape",
+      desc: "Pure C++ CLI-based terminal adventure game featuring custom logic and ASCII art.",
+      tags: ["C++", "Game Dev", "CLI"],
+      color: "bg-[#E6FEEA]"
+    },
+    {
+      name: "Project Sentinel",
+      desc: "Python-based system resource monitor featuring a CLI interface inspired by Linux btop.",
+      tags: ["Python", "System", "CLI"],
+      color: "bg-[#FDE7F0]"
+    },
+    {
+      name: "AppSentinel",
+      desc: "TypeScript front-end prototype designed to scan and match security certificates of banking APKs.",
+      tags: ["TypeScript", "Security", "FinTech"],
+      color: "bg-[#FFF9E5]"
+    }
+  ];
+
+  return (
+    <SectionWrapper id="projects" className="py-24 px-6 container mx-auto">
+      <div className="flex flex-col items-center mb-16">
+        <h2 className="text-4xl md:text-5xl font-outfit font-bold text-black mb-4">Engineering Projects</h2>
+        <div className="h-2 w-24 bg-[#E878A8] border-2 border-black rounded-full shadow-[2px_2px_0px_#000000]"></div>
+      </div>
+
+      <motion.div 
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="grid grid-cols-1 md:grid-cols-2 gap-10"
+      >
+        {mainProjects.map((p, idx) => (
+          <motion.div key={idx} variants={itemVariants}>
+            <BrutalistCard bgColor={p.color} className="h-full flex flex-col" hasMockup>
+              <div className="flex justify-between items-start mb-4">
+                <h3 className="text-3xl font-outfit font-bold text-black">{p.name}</h3>
+                <span className="px-3 py-1 bg-white border-2 border-black text-[10px] font-black rounded-full uppercase tracking-tighter shadow-[2px_2px_0px_#000000]">{p.badge}</span>
+              </div>
+              <p className="text-black font-jakarta font-semibold mb-6 flex-grow leading-snug">
+                {p.desc}
+              </p>
+              <div className="flex flex-wrap gap-2 mb-8">
+                {p.tags.map(t => (
+                  <span key={t} className="text-[10px] font-black uppercase tracking-widest px-2 py-1 bg-white/50 border border-black rounded">{t}</span>
+                ))}
+              </div>
+              <motion.button 
+                whileHover={{ x: 2 }}
+                className="flex items-center gap-2 font-black text-black uppercase text-sm tracking-widest group"
+              >
+                View Repository <ExternalLink size={18} className="group-hover:translate-x-1 transition-transform" />
+              </motion.button>
+            </BrutalistCard>
+          </motion.div>
+        ))}
+      </motion.div>
+
+      <div className="mt-12 flex flex-col items-center">
+        <AnimatePresence>
+          {showSandbox && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.5, ease: "easeInOut" }}
+              className="overflow-hidden w-full"
             >
-              View Repository <ExternalLink size={18} className="group-hover:translate-x-1 transition-transform" />
-            </motion.button>
-          </BrutalistCard>
-        </motion.div>
-      ))}
-    </motion.div>
-  </SectionWrapper>
-);
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 pt-10">
+                {sandboxProjects.map((p, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: idx * 0.1 }}
+                  >
+                    <PastelCard bgColor={p.color} className="h-full border-2 border-black shadow-[4px_4px_0px_#000000]">
+                      <h4 className="text-xl font-outfit font-bold text-black mb-2">{p.name}</h4>
+                      <p className="text-sm font-jakarta font-medium text-gray-800 mb-4">{p.desc}</p>
+                      <div className="flex flex-wrap gap-2">
+                        {p.tags.map(t => (
+                          <span key={t} className="text-[10px] font-black uppercase tracking-widest px-2 py-0.5 bg-white/50 border border-black rounded">{t}</span>
+                        ))}
+                      </div>
+                    </PastelCard>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={() => setShowSandbox(!showSandbox)}
+          className="mt-10 px-8 py-3 bg-black text-white font-black tracking-widest rounded-full border-2 border-black shadow-[4px_4px_0px_#000000] hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all"
+        >
+          {showSandbox ? "Show less" : "Explore Other Projects"}
+        </motion.button>
+      </div>
+    </SectionWrapper>
+  );
+};
 
 const Leadership = () => {
   const experiences = [
     {
-      title: "Lead Organizer",
-      org: "GDG on Campus SRMCEM",
-      period: "Sep 2024 - Present",
+      title: "3rd Place Winner | HackCBS 8.0",
+      org: "Asia's Largest Student Hackathon",
+      period: "Nov 2024",
       color: "bg-[#5BB4E5]",
       cardColor: "bg-[#DDF4FD]",
-      icon: <Users size={24} />,
-      desc: "Managing infrastructure for 15+ events, orchestrating technical workshops, and growing a vibrant community of 500+ developers."
+      icon: <Award size={24} />,
+      desc: "Secured 2nd Runner Up at India's largest student-run hackathon, competing as a 2-person team against senior 4-person teams."
     },
     {
-      title: "Volunteer",
-      org: "DevFest Lucknow (2024 & 2025)",
-      period: "2024 - 2025",
+      title: "Lead Organizer",
+      org: "GDG on Campus SRMCEM",
+      period: "2024 - Present",
       color: "bg-[#5FD974]",
       cardColor: "bg-[#E6FEEA]",
+      icon: <Users size={24} />,
+      desc: "Coordinating 15+ tech events and workshops for a 1000+ student community. Co-organized a city-wide AI hackathon across 6 venues."
+    },
+    {
+      title: "College Qualifier",
+      org: "Smart India Hackathon",
+      period: "2023 & 2024",
+      color: "bg-[#E878A8]",
+      cardColor: "bg-[#FDE7F0]",
+      icon: <Zap size={24} />,
+      desc: "Qualified at the institutional level for two consecutive years with CPPCloak and Saksham AI."
+    },
+    {
+      title: "Top 105 Nationally",
+      org: "Google Solution Challenge 2025",
+      period: "Jan 2025",
+      color: "bg-[#F7D046]",
+      cardColor: "bg-[#FFF9E5]",
       icon: <Globe size={24} />,
-      desc: "Supported technical operations for 1000+ attendees. Assisted speakers with live demos and technical troubleshooting."
+      desc: "Led a 4-member team among 1000+ submissions with AetherLearn, an AI-powered platform addressing UN SDG #4."
+    },
+    {
+      title: "Technical Co-Head",
+      org: "GDG on Campus SRMCEM",
+      period: "2023 - 2024",
+      color: "bg-[#5BB4E5]",
+      cardColor: "bg-[#DDF4FD]",
+      icon: <Code2 size={24} />,
+      desc: "Managed technical infrastructure for 12+ events and delivered sessions on Gemini and GCP to 800+ developers."
+    },
+    {
+      title: "1st Place",
+      org: "Zephyre Hackathon",
+      period: "2023",
+      color: "bg-[#5FD974]",
+      cardColor: "bg-[#E6FEEA]",
+      icon: <Award size={24} />,
+      desc: "Won first place as a first-year team of two against multi-disciplinary senior teams."
     }
   ];
 
   return (
     <SectionWrapper id="experience" className="py-24 px-6 container mx-auto">
       <div className="flex flex-col items-center mb-24">
-        <h2 className="text-4xl md:text-5xl font-outfit font-bold text-black mb-4">Leadership & Experience</h2>
+        <h2 className="text-4xl md:text-5xl font-outfit font-bold text-black mb-4">Experience & Achievements</h2>
         <div className="h-2 w-24 bg-[#5BB4E5] border-2 border-black rounded-full shadow-[2px_2px_0px_#000000]"></div>
       </div>
       
@@ -435,11 +548,11 @@ const Leadership = () => {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="w-full md:w-[45%]"
               >
-                <PastelCard bgColor={exp.cardColor} className="hover:scale-[1.02] transition-transform duration-300">
+                <PastelCard bgColor={exp.cardColor} className="hover:scale-[1.02] transition-transform duration-300 border-2 border-black shadow-[4px_4px_0px_#000000]">
                   <span className="text-xs font-black text-black/40 uppercase tracking-widest mb-2 block font-jakarta">{exp.period}</span>
-                  <h3 className="text-3xl font-outfit font-bold text-black mb-1">{exp.title}</h3>
-                  <p className="text-xl font-outfit font-bold text-[#4285F4] mb-6">{exp.org}</p>
-                  <p className="text-lg font-jakarta font-medium text-gray-800 leading-relaxed">
+                  <h3 className="text-2xl font-outfit font-bold text-black mb-1">{exp.title}</h3>
+                  <p className="text-lg font-outfit font-bold text-[#4285F4] mb-4">{exp.org}</p>
+                  <p className="text-base font-jakarta font-medium text-gray-800 leading-relaxed">
                     {exp.desc}
                   </p>
                 </PastelCard>
@@ -467,33 +580,101 @@ const Leadership = () => {
   );
 };
 
-const CertificationsGrid = () => (
-  <SectionWrapper className="py-24 px-6 container mx-auto">
-    <div className="flex flex-col items-center mb-16">
-      <h2 className="text-4xl md:text-5xl font-outfit font-bold text-black mb-4">Professional training</h2>
-      <div className="h-2 w-24 bg-[#F7D046] border-2 border-black rounded-full shadow-[2px_2px_0px_#000000]"></div>
-    </div>
-    
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-      {[
-        "Google IT Automation with Python",
-        "Google IT Support Professional",
-        "Google Cybersecurity Professional",
-        "Google AI & Prompting Essentials"
-      ].map((cert) => (
-        <PastelCard key={cert} bgColor="bg-white" className="flex flex-col gap-6 hover:scale-105 transition-transform border-2 border-black shadow-[4px_4px_0px_#000000] !rounded-2xl">
-          <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-[#4285F4] border-2 border-black">
-            <Award size={24} />
-          </div>
-          <div>
-            <h4 className="font-outfit font-bold text-black text-lg leading-tight">{cert}</h4>
-            <p className="text-sm text-[#4285F4] font-black mt-3 font-jakarta uppercase tracking-wider">Verified by Google</p>
-          </div>
-        </PastelCard>
-      ))}
-    </div>
-  </SectionWrapper>
-);
+const CertificationsGrid = () => {
+  const [showDesignCerts, setShowDesignCerts] = useState(false);
+
+  const certColors = [
+    { bg: "bg-[#DDF4FD]", icon: "text-[#5BB4E5]", iconBg: "bg-[#5BB4E5]/10" },
+    { bg: "bg-[#E6FEEA]", icon: "text-[#5FD974]", iconBg: "bg-[#5FD974]/10" },
+    { bg: "bg-[#FDE7F0]", icon: "text-[#E878A8]", iconBg: "bg-[#E878A8]/10" },
+    { bg: "bg-[#FFF9E5]", icon: "text-[#F7D046]", iconBg: "bg-[#F7D046]/10" }
+  ];
+
+  const mainCerts = [
+    "Google IT Automation with Python",
+    "Google IT Support Professional",
+    "Google Cybersecurity Professional",
+    "Google AI & Prompting Essentials"
+  ];
+
+  const designCerts = [
+    "Build Dynamic UI for Websites",
+    "Foundations of UX Design"
+  ];
+
+  return (
+    <SectionWrapper className="py-24 px-6 container mx-auto">
+      <div className="flex flex-col items-center mb-16">
+        <h2 className="text-4xl md:text-5xl font-outfit font-bold text-black mb-4">Professional training</h2>
+        <div className="h-2 w-24 bg-[#F7D046] border-2 border-black rounded-full shadow-[2px_2px_0px_#000000]"></div>
+      </div>
+      
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        {mainCerts.map((cert, idx) => {
+          const theme = certColors[idx % certColors.length];
+          return (
+            <PastelCard key={cert} bgColor={theme.bg} className="flex flex-col gap-6 hover:scale-105 transition-transform border-2 border-black shadow-[4px_4px_0px_#000000] !rounded-2xl">
+              <div className={`w-12 h-12 ${theme.iconBg} rounded-xl flex items-center justify-center ${theme.icon} border-2 border-black`}>
+                <Award size={24} />
+              </div>
+              <div>
+                <h4 className="font-outfit font-bold text-black text-lg leading-tight">{cert}</h4>
+                <p className={`text-sm ${theme.icon} font-black mt-3 font-jakarta uppercase tracking-wider`}>VERIFIED BY COURSERA</p>
+              </div>
+            </PastelCard>
+          );
+        })}
+      </div>
+
+      <div className="mt-12 flex flex-col items-center">
+        <AnimatePresence>
+          {showDesignCerts && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.5, ease: "easeInOut" }}
+              className="overflow-hidden w-full"
+            >
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 pt-10">
+                {designCerts.map((cert, idx) => {
+                  // Offset by mainCerts.length to continue alternating
+                  const theme = certColors[(idx + mainCerts.length) % certColors.length];
+                  return (
+                    <motion.div
+                      key={cert}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                    >
+                      <PastelCard bgColor={theme.bg} className="flex flex-col gap-6 hover:scale-105 transition-transform border-2 border-black shadow-[4px_4px_0px_#000000] !rounded-2xl h-full">
+                        <div className={`w-12 h-12 ${theme.iconBg} rounded-xl flex items-center justify-center ${theme.icon} border-2 border-black`}>
+                          <Award size={24} />
+                        </div>
+                        <div>
+                          <h4 className="font-outfit font-bold text-black text-lg leading-tight">{cert}</h4>
+                          <p className={`text-sm ${theme.icon} font-black mt-3 font-jakarta uppercase tracking-wider`}>VERIFIED BY COURSERA</p>
+                        </div>
+                      </PastelCard>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={() => setShowDesignCerts(!showDesignCerts)}
+          className="mt-10 px-8 py-3 bg-black text-white font-black tracking-widest rounded-full border-2 border-black shadow-[4px_4px_0px_#000000] hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all"
+        >
+          {showDesignCerts ? "Show less" : "Explore Other Certificates"}
+        </motion.button>
+      </div>
+    </SectionWrapper>
+  );
+};
 
 const Footer = () => (
   <footer className="py-20 border-t-4 border-black bg-white">
