@@ -200,7 +200,7 @@ const Hero = () => {
           variants={itemVariants}
           className="inline-block px-4 py-1.5 mb-8 text-xs font-black tracking-[0.2em] text-black uppercase bg-[#F7D046] border-2 border-black rounded-full font-jakarta shadow-[3px_3px_0px_#000000]"
         >
-          Systems Architect 2027
+          Available for 2026 Internships
         </motion.span>
         
         <motion.h1 
@@ -247,7 +247,7 @@ const Hero = () => {
 };
 
 const TheJourney = () => (
-  <SectionWrapper className="py-24 px-6 container mx-auto">
+  <SectionWrapper className="py-24 px-12 container mx-auto">
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
       <div className="space-y-8">
         <h2 className="text-5xl md:text-6xl font-outfit font-bold text-black tracking-tight leading-none">
