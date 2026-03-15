@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useMotionValue, useMotionTemplate } from 'framer-motion';
 import { 
   Github, 
   Linkedin, 
@@ -158,6 +158,15 @@ const Navbar = () => (
 );
 
 const Hero = () => {
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  function handleMouseMove({ currentTarget, clientX, clientY }: React.MouseEvent) {
+    const { left, top } = currentTarget.getBoundingClientRect();
+    mouseX.set(clientX - left);
+    mouseY.set(clientY - top);
+  }
+
   const typewriterText = useTypewriter([
     "Priyam Srivastava.", 
     "a Systems Engineer.", 
@@ -166,12 +175,26 @@ const Hero = () => {
   ]);
 
   return (
-    <section className="min-h-[95vh] flex flex-col items-center justify-center text-center px-6 pt-32 pb-20 relative overflow-hidden">
+    <section 
+      onMouseMove={handleMouseMove}
+      className="min-h-[95vh] flex flex-col items-center justify-center text-center px-6 pt-32 pb-20 relative overflow-hidden bg-slate-50"
+    >
+      {/* Spotlight Grid Reveal Layer */}
+      <motion.div
+        className="pointer-events-none absolute inset-0 z-0"
+        style={{
+          backgroundImage: "linear-gradient(to right, #e2e8f0 1px, transparent 1px), linear-gradient(to bottom, #e2e8f0 1px, transparent 1px)",
+          backgroundSize: "40px 40px",
+          maskImage: useMotionTemplate`radial-gradient(350px circle at ${mouseX}px ${mouseY}px, black, transparent)`,
+          WebkitMaskImage: useMotionTemplate`radial-gradient(350px circle at ${mouseX}px ${mouseY}px, black, transparent)`,
+        }}
+      />
+
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="z-10 max-w-5xl"
+        className="z-10 max-w-5xl pointer-events-none"
       >
         <motion.span 
           variants={itemVariants}
@@ -189,14 +212,14 @@ const Hero = () => {
         
         <motion.p 
           variants={itemVariants}
-          className="text-lg md:text-xl font-jakarta font-medium text-gray-800 mb-12 max-w-3xl mx-auto leading-relaxed italic"
+          className="text-xl md:text-2xl font-jakarta font-bold text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed"
         >
-          "I started my journey building on the web, but I quickly fell in love with the machinery that powers it. Today, I'm a B.Tech student focused on bridging the gap between clean user interfaces and low-level system architecture. Whether I'm managing infrastructure for GDG, automating Linux workflows, or integrating AI, I believe the best developers understand both the paint and the plumbing."
+          "Bridging the gap between clean user interfaces and low-level system architecture. Passionate about Linux internals, scalable AI, and writing both the paint and the plumbing."
         </motion.p>
         
         <motion.div 
           variants={itemVariants}
-          className="flex flex-wrap justify-center gap-6"
+          className="flex flex-wrap justify-center gap-6 pointer-events-auto"
         >
           <motion.a 
             whileHover={{ x: -2, y: -2, boxShadow: "8px 8px 0px #000000" }}
