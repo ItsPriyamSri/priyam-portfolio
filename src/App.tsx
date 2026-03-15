@@ -287,7 +287,7 @@ const TheJourney = () => (
           y: { duration: 4, repeat: Infinity, ease: "easeInOut" }
         }}
         viewport={{ once: true }}
-        className="relative group"
+        className="relative group max-w-[95%] mx-auto"
       >
         <div className="aspect-square bg-[#F7D046] border-4 border-black rounded-[2.5rem] shadow-[12px_12px_0px_#000000] flex items-center justify-center overflow-hidden">
           <Code2 size={120} className="text-black/20 absolute -bottom-4 -right-4 rotate-12" />
@@ -321,25 +321,25 @@ const TechnicalExpertise = () => (
           title: "Full-Stack/Frameworks", 
           icon: <Layers size={28} />, 
           color: "bg-[#DDF4FD]", 
-          skills: ["React", "TypeScript", "Node.js", "Express", "Firebase", "Tailwind CSS", "MongoDB", "SQL"] 
+          skills: ["React", "TypeScript", "JavaScript", "Node.js", "Express", "Firebase", "Tailwind CSS", "MongoDB", "SQL"] 
         },
         { 
           title: "Automation", 
           icon: <Terminal size={28} />, 
           color: "bg-[#E6FEEA]", 
-          skills: ["Python", "Bash", "Shell Scripting", "Docker", "GCP", "FastAPI", "REST APIs"] 
+          skills: ["Python", "Bash", "Shell Scripting", "Docker", "GCP", "Jupyter", "FastAPI", "REST APIs"] 
         },
         { 
           title: "AI & Security", 
           icon: <Zap size={28} />, 
           color: "bg-[#FFF0F0]", 
-          skills: ["RAG Systems", "NLP", "LLM Integration", "Prompt Eng", "Gemini API", "LLMs", "Cybersecurity"] 
+          skills: ["RAG Systems", "NLP", "LLM Integration", "Perplexity API", "AI Agents", "Prompt Eng", "Gemini API", "LLMs", "Cybersecurity"] 
         },
         { 
-          title: "Core Systems", 
+          title: "Systems & Tools", 
           icon: <Cpu size={28} />, 
           color: "bg-[#FEFCE8]", 
-          skills: ["C++", "C", "Linux Internals", "OS Design", "SysAdmin"] 
+          skills: ["C++", "C", "Linux Internals", "Networking", "Git/GitHub", "VS Code", "OS Design", "SysAdmin"] 
         }
       ].map((cat, idx) => (
         <motion.div key={idx} variants={itemVariants}>
@@ -822,7 +822,7 @@ const Footer = () => {
             © 2026 PRIYAM SRIVASTAVA
           </div>
           
-          <div className="px-4 py-1.5 bg-white border-2 border-black rounded-full text-[10px] font-black uppercase tracking-[0.2em] text-black shadow-[3px_3px_0px_#000000]">
+          <div className="px-4 py-1.5 bg-[#F7D046] border-2 border-black rounded-full text-[10px] font-black uppercase tracking-[0.2em] text-black shadow-[3px_3px_0px_#000000]">
             AVAILABLE FOR 2026 INTERNSHIPS
           </div>
 
