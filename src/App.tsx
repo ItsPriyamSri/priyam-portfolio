@@ -54,7 +54,7 @@ const containerVariants = {
       staggerChildren: 0.1
     }
   }
-};
+} as const;
 
 const itemVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -63,7 +63,7 @@ const itemVariants = {
     y: 0,
     transition: { type: "spring", stiffness: 300, damping: 24 }
   }
-};
+} as const;
 
 const revealVariants = {
   hidden: { opacity: 0, y: 30 },
@@ -72,7 +72,7 @@ const revealVariants = {
     y: 0,
     transition: { duration: 0.6, ease: "easeOut" }
   }
-};
+} as const;
 
 // --- Reusable Components ---
 
@@ -255,11 +255,25 @@ const TheJourney = () => (
         </h2>
         <div className="space-y-6 text-xl font-jakarta text-gray-800 leading-relaxed">
           <p>
-            I'm a B.Tech Computer Science student at SRMCEM (Class of 2027). While I started by mastering the MERN stack, my true passion lies in the machinery underneath.
+            B.Tech CSE student at AKTU (2027). Orchestrated city-wide hackathons across 6 venues while mastering the stack from Linux internals to AI/ML integration.
           </p>
-          <p>
-            Today, I focus on low-level computing, Linux internals, C++ architecture, and AI integrations. I love building things that scale, and breaking things to see how they work.
-          </p>
+          
+          <div className="grid grid-cols-2 gap-4 pt-4">
+            {[
+              { label: "15+ Events Organized", color: "bg-[#DDF4FD]" },
+              { label: "1500+ Developers Led", color: "bg-[#E6FEEA]" },
+              { label: "3rd Place @ hackCBS", color: "bg-[#FFF0F0]" },
+              { label: "Top 105 National Rank", color: "bg-[#FDE7F0]" },
+            ].map((metric, i) => (
+              <motion.div
+                key={i}
+                whileHover={{ y: -5 }}
+                className={`${metric.color} p-4 rounded-2xl border-2 border-black/5 flex flex-col items-center justify-center text-center shadow-sm`}
+              >
+                <span className="font-outfit font-bold text-base md:text-lg leading-tight text-black">{metric.label}</span>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
       
@@ -303,28 +317,28 @@ const TechnicalExpertise = () => (
     >
       {[
         { 
-          title: "Core Systems", 
-          icon: <Cpu size={28} />, 
+          title: "Full-Stack/Frameworks", 
+          icon: <Layers size={28} />, 
           color: "bg-[#DDF4FD]", 
-          skills: ["C++", "C", "Linux Internals", "OS Design", "SysAdmin"] 
+          skills: ["React", "TypeScript", "Node.js", "Express", "Firebase", "Tailwind CSS", "MongoDB", "SQL"] 
         },
         { 
           title: "Automation", 
           icon: <Terminal size={28} />, 
           color: "bg-[#E6FEEA]", 
-          skills: ["Python", "Bash", "Docker", "FastAPI", "REST APIs"] 
+          skills: ["Python", "Bash", "Shell Scripting", "Docker", "GCP", "FastAPI", "REST APIs"] 
         },
         { 
           title: "AI & Security", 
           icon: <Zap size={28} />, 
           color: "bg-[#FFF0F0]", 
-          skills: ["Prompt Eng", "Gemini API", "LLMs", "Cybersecurity"] 
+          skills: ["RAG Systems", "NLP", "LLM Integration", "Prompt Eng", "Gemini API", "LLMs", "Cybersecurity"] 
         },
         { 
-          title: "Full-Stack", 
-          icon: <Layers size={28} />, 
-          color: "bg-blue-50/50", 
-          skills: ["React", "TypeScript", "Node.js", "MongoDB", "SQL"] 
+          title: "Core Systems", 
+          icon: <Cpu size={28} />, 
+          color: "bg-[#FEFCE8]", 
+          skills: ["C++", "C", "Linux Internals", "OS Design", "SysAdmin"] 
         }
       ].map((cat, idx) => (
         <motion.div key={idx} variants={itemVariants}>
