@@ -255,22 +255,24 @@ const TheJourney = () => (
         </h2>
         <div className="space-y-6 text-xl font-jakarta text-gray-800 leading-relaxed">
           <p>
-            B.Tech CSE student at AKTU (2027). Orchestrated city-wide hackathons across 6 venues while mastering the stack from Linux internals to AI/ML integration.
+            B.Tech CSE at AKTU (2027). I work from Linux internals and C++ systems all the way up to full-stack MERN apps and AI integrations — not as separate tracks, but as one way of thinking. I lead GDG on Campus SRMCEM, where I've run 15+ events and scaled a hackathon to 6 venues across Lucknow. I like understanding how things work at every layer, and then building on top of that.
           </p>
           
-          <div className="grid grid-cols-2 gap-4 pt-4">
+          <div className="space-y-3 pt-4">
             {[
-              { label: "15+ Events Organized", color: "bg-[#DDF4FD]" },
-              { label: "1500+ Developers Led", color: "bg-[#E6FEEA]" },
-              { label: "3rd Place @ hackCBS", color: "bg-[#FFF0F0]" },
-              { label: "Top 105 National Rank", color: "bg-[#FDE7F0]" },
+              { title: "🥉 3rd Place @ HackCBS 8.0", sub: "India's largest student-run hackathon", color: "bg-[#FFF0F0]" },
+              { title: "🌐 Top 105 @ Solution Challenge 2025", sub: "Among 3000+ teams nationwide", color: "bg-[#DDF4FD]" },
+              { title: "🐧 Linux & Systems Engineering", sub: "C++, Python, CLI lover", color: "bg-[#E6FEEA]" },
+              { title: "⚡ MERN Stack Developer", sub: "Full-stack, production-ready", color: "bg-[#FDE7F0]" },
+              { title: "📅 Lead community of 1500+ developers", sub: "GDG on Campus SRMCEM", color: "bg-[#FEFCE8]" },
             ].map((metric, i) => (
               <motion.div
                 key={i}
-                whileHover={{ y: -5 }}
-                className={`${metric.color} p-4 rounded-2xl border-2 border-black/5 flex flex-col items-center justify-center text-center shadow-sm`}
+                whileHover={{ x: 5 }}
+                className={`${metric.color} p-4 rounded-2xl border-2 border-black/5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 shadow-sm`}
               >
-                <span className="font-outfit font-bold text-base md:text-lg leading-tight text-black">{metric.label}</span>
+                <span className="font-outfit font-bold text-lg text-black">{metric.title}</span>
+                <span className="font-jakarta text-sm text-gray-600 sm:text-right">{metric.sub}</span>
               </motion.div>
             ))}
           </div>
@@ -302,7 +304,7 @@ const TheJourney = () => (
 );
 
 const TechnicalExpertise = () => (
-  <SectionWrapper className="py-24 px-6 container mx-auto">
+  <SectionWrapper className="py-24 px-10 container mx-auto">
     <div className="flex flex-col items-center mb-16">
       <h2 className="text-4xl md:text-5xl font-outfit font-bold text-black mb-4">Technical Expertise</h2>
       <div className="h-2 w-24 bg-[#5FD974] border-2 border-black rounded-full shadow-[2px_2px_0px_#000000]"></div>
@@ -419,7 +421,7 @@ const Projects = () => {
   ];
 
   return (
-    <SectionWrapper id="projects" className="py-24 px-6 container mx-auto">
+    <SectionWrapper id="projects" className="py-24 px-10 container mx-auto">
       <div className="flex flex-col items-center mb-16">
         <h2 className="text-4xl md:text-5xl font-outfit font-bold text-black mb-4">Engineering Projects</h2>
         <div className="h-2 w-24 bg-[#E878A8] border-2 border-black rounded-full shadow-[2px_2px_0px_#000000]"></div>
@@ -466,7 +468,7 @@ const Projects = () => {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.5, ease: "easeInOut" }}
-              className="overflow-hidden w-full"
+              className="overflow-hidden w-full pb-10 px-4"
             >
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 pt-10">
                 {sandboxProjects.map((p, idx) => (
@@ -476,15 +478,15 @@ const Projects = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: idx * 0.1 }}
                   >
-                    <PastelCard bgColor={p.color} className="h-full border-2 border-black shadow-[4px_4px_0px_#000000]">
+                    <BrutalistCard bgColor={p.color} className="h-full flex flex-col">
                       <h4 className="text-xl font-outfit font-bold text-black mb-2">{p.name}</h4>
-                      <p className="text-sm font-jakarta font-medium text-gray-800 mb-4">{p.desc}</p>
+                      <p className="text-sm font-jakarta font-medium text-gray-800 mb-4 flex-grow">{p.desc}</p>
                       <div className="flex flex-wrap gap-2">
                         {p.tags.map(t => (
                           <span key={t} className="text-[10px] font-black uppercase tracking-widest px-2 py-0.5 bg-white/50 border border-black rounded">{t}</span>
                         ))}
                       </div>
-                    </PastelCard>
+                    </BrutalistCard>
                   </motion.div>
                 ))}
               </div>
@@ -641,7 +643,7 @@ const CertificationsGrid = () => {
   ];
 
   return (
-    <SectionWrapper className="py-24 px-6 container mx-auto">
+    <SectionWrapper className="py-24 px-10 container mx-auto">
       <div className="flex flex-col items-center mb-16">
         <h2 className="text-4xl md:text-5xl font-outfit font-bold text-black mb-4">Professional training</h2>
         <div className="h-2 w-24 bg-[#F7D046] border-2 border-black rounded-full shadow-[2px_2px_0px_#000000]"></div>
@@ -651,7 +653,7 @@ const CertificationsGrid = () => {
         {mainCerts.map((cert, idx) => {
           const theme = certColors[idx % certColors.length];
           return (
-            <PastelCard key={cert} bgColor={theme.bg} className="flex flex-col gap-6 hover:scale-105 transition-transform border-2 border-black shadow-[4px_4px_0px_#000000] !rounded-2xl">
+            <PastelCard key={cert} bgColor={theme.bg} className="flex flex-col gap-6 hover:scale-105 transition-transform border-2 border-black shadow-[4px_4px_0px_#000000] !rounded-2xl h-full">
               <div className={`w-12 h-12 ${theme.iconBg} rounded-xl flex items-center justify-center ${theme.icon} border-2 border-black`}>
                 <Award size={24} />
               </div>
@@ -672,7 +674,7 @@ const CertificationsGrid = () => {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.5, ease: "easeInOut" }}
-              className="overflow-hidden w-full"
+              className="overflow-hidden w-full pb-10 px-4"
             >
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 pt-10">
                 {designCerts.map((cert, idx) => {
