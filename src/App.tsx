@@ -179,14 +179,14 @@ const Hero = () => {
       onMouseMove={handleMouseMove}
       className="min-h-[95vh] flex flex-col items-center justify-center text-center px-6 pt-32 pb-20 relative overflow-hidden bg-slate-50"
     >
-      {/* Spotlight Grid Reveal Layer */}
+      {/* Spotlight Grid Reveal Layer - Punchier Physics */}
       <motion.div
         className="pointer-events-none absolute inset-0 z-0"
         style={{
-          backgroundImage: "linear-gradient(to right, #e2e8f0 1px, transparent 1px), linear-gradient(to bottom, #e2e8f0 1px, transparent 1px)",
+          backgroundImage: "linear-gradient(to right, rgba(0,0,0,0.15) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.15) 1px, transparent 1px)",
           backgroundSize: "40px 40px",
-          maskImage: useMotionTemplate`radial-gradient(350px circle at ${mouseX}px ${mouseY}px, black, transparent)`,
-          WebkitMaskImage: useMotionTemplate`radial-gradient(350px circle at ${mouseX}px ${mouseY}px, black, transparent)`,
+          maskImage: useMotionTemplate`radial-gradient(300px circle at ${mouseX}px ${mouseY}px, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 25%, rgba(0,0,0,0) 80%)`,
+          WebkitMaskImage: useMotionTemplate`radial-gradient(300px circle at ${mouseX}px ${mouseY}px, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 25%, rgba(0,0,0,0) 80%)`,
         }}
       />
 
@@ -205,9 +205,10 @@ const Hero = () => {
         
         <motion.h1 
           variants={itemVariants}
-          className="text-5xl md:text-8xl font-outfit font-bold text-black mb-8 leading-[1.1] tracking-tighter"
+          className="text-5xl md:text-8xl font-outfit font-bold text-black mb-8 leading-[1] tracking-tighter"
         >
-          Hi, I am <span className="text-[#4285F4] inline-block min-w-[300px] text-left">{typewriterText}<span className="animate-pulse">|</span></span>
+          <span className="block">Hi, I am</span>
+          <span className="block text-[#4285F4]">{typewriterText}<span className="animate-pulse">|</span></span>
         </motion.h1>
         
         <motion.p 
