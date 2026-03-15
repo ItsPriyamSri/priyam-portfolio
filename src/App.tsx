@@ -177,7 +177,7 @@ const Hero = () => {
   return (
     <section 
       onMouseMove={handleMouseMove}
-      className="min-h-[95vh] flex flex-col items-center justify-center text-center px-6 pt-32 pb-20 relative overflow-hidden bg-slate-50"
+      className="min-h-[95vh] flex flex-col items-center justify-center text-center px-6 pt-32 pb-20 relative overflow-hidden bg-slate-50 border-b-4 border-black"
     >
       {/* Spotlight Grid Reveal Layer - Punchier Physics */}
       <motion.div
