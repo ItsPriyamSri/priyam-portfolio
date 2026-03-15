@@ -258,21 +258,20 @@ const TheJourney = () => (
             B.Tech CSE at AKTU (2027). I work from Linux internals and C++ systems all the way up to full-stack MERN apps and AI integrations — not as separate tracks, but as one way of thinking. I lead GDG on Campus SRMCEM, where I've run 15+ events and scaled a hackathon to 6 venues across Lucknow. I like understanding how things work at every layer, and then building on top of that.
           </p>
           
-          <div className="space-y-3 pt-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
             {[
               { title: "🥉 3rd Place @ HackCBS 8.0", sub: "India's largest student-run hackathon", color: "bg-[#FFF0F0]" },
               { title: "🌐 Top 105 @ Solution Challenge 2025", sub: "Among 3000+ teams nationwide", color: "bg-[#DDF4FD]" },
               { title: "🐧 Linux & Systems Engineering", sub: "C++, Python, CLI lover", color: "bg-[#E6FEEA]" },
-              { title: "⚡ MERN Stack Developer", sub: "Full-stack, production-ready", color: "bg-[#FDE7F0]" },
               { title: "📅 Lead community of 1500+ developers", sub: "GDG on Campus SRMCEM", color: "bg-[#FEFCE8]" },
             ].map((metric, i) => (
               <motion.div
                 key={i}
-                whileHover={{ x: 5 }}
-                className={`${metric.color} p-4 rounded-2xl border-2 border-black/5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 shadow-sm`}
+                whileHover={{ y: -5 }}
+                className={`${metric.color} px-6 py-4 rounded-full border-2 border-black/5 flex flex-col items-center justify-center text-center shadow-sm`}
               >
-                <span className="font-outfit font-bold text-lg text-black">{metric.title}</span>
-                <span className="font-jakarta text-sm text-gray-600 sm:text-right">{metric.sub}</span>
+                <span className="font-outfit font-bold text-base text-black leading-tight">{metric.title}</span>
+                <span className="font-jakarta text-[10px] font-bold uppercase tracking-wider text-gray-500 mt-1">{metric.sub}</span>
               </motion.div>
             ))}
           </div>
@@ -716,43 +715,125 @@ const CertificationsGrid = () => {
   );
 };
 
-const Footer = () => (
-  <footer className="py-20 border-t-4 border-black bg-white">
-    <div className="container mx-auto px-6">
-      <div className="flex flex-col md:flex-row justify-between items-center gap-12">
-        <div className="flex flex-col items-center md:items-start gap-4">
-          <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-xl bg-[#4285F4] border-2 border-black flex items-center justify-center text-white font-bold text-xl shadow-[4px_4px_0px_#000000]">P</div>
-            <span className="text-3xl font-outfit font-bold text-black tracking-tighter">Priyam Srivastava</span>
+const Footer = () => {
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  function handleMouseMove({ currentTarget, clientX, clientY }: React.MouseEvent) {
+    const { left, top } = currentTarget.getBoundingClientRect();
+    mouseX.set(clientX - left);
+    mouseY.set(clientY - top);
+  }
+
+  return (
+    <footer 
+      onMouseMove={handleMouseMove}
+      className="relative py-24 border-t-4 border-black bg-slate-50 overflow-hidden"
+    >
+      {/* Mini Spotlight Background */}
+      <motion.div
+        className="pointer-events-none absolute inset-0 z-0"
+        style={{
+          backgroundImage: "linear-gradient(to right, rgba(0,0,0,0.1) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.1) 1px, transparent 1px)",
+          backgroundSize: "30px 30px",
+          maskImage: useMotionTemplate`radial-gradient(200px circle at ${mouseX}px ${mouseY}px, rgba(0,0,0,1) 0%, rgba(0,0,0,0.5) 30%, rgba(0,0,0,0) 70%)`,
+          WebkitMaskImage: useMotionTemplate`radial-gradient(200px circle at ${mouseX}px ${mouseY}px, rgba(0,0,0,1) 0%, rgba(0,0,0,0.5) 30%, rgba(0,0,0,0) 70%)`,
+        }}
+      />
+
+      <div className="container mx-auto px-10 relative z-10">
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={containerVariants}
+          className="grid grid-cols-1 lg:grid-cols-3 gap-16 mb-20"
+        >
+          {/* Left Column: Branding */}
+          <motion.div variants={itemVariants} className="space-y-6">
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 rounded-xl bg-[#4285F4] border-2 border-black flex items-center justify-center text-white font-bold text-xl shadow-[4px_4px_0px_#000000]">P</div>
+              <span className="text-3xl font-outfit font-bold text-black tracking-tighter">Priyam Srivastava</span>
+            </div>
+            <p className="text-gray-600 font-jakarta font-bold text-lg leading-relaxed max-w-sm">
+              Building high-performance engines and intuitive interfaces. Bridging the paint and the plumbing.
+            </p>
+          </motion.div>
+
+          {/* Middle Column: Quick Links */}
+          <motion.div variants={itemVariants} className="flex flex-col gap-4">
+            <h4 className="font-outfit font-black uppercase tracking-widest text-black/40 text-sm mb-2">Navigation</h4>
+            {[
+              { label: "Home", href: "#" },
+              { label: "Projects", href: "#projects" },
+              { label: "Skills", href: "#skills" },
+              { label: "Experience", href: "#experience" }
+            ].map((link) => (
+              <a 
+                key={link.label} 
+                href={link.href} 
+                className="text-xl font-outfit font-bold text-black hover:text-[#4285F4] transition-colors w-fit"
+              >
+                {link.label}
+              </a>
+            ))}
+          </motion.div>
+
+          {/* Right Column: CTA Card */}
+          <motion.div variants={itemVariants} className="space-y-8">
+            <div className="p-8 bg-white border-2 border-black rounded-2xl shadow-[8px_8px_0px_#000000] relative group">
+              <h4 className="text-3xl font-outfit font-bold text-black mb-6">Ready to build?</h4>
+              <motion.a 
+                whileHover={{ x: -2, y: -2, boxShadow: "6px 6px 0px #000000" }}
+                whileTap={{ scale: 0.95 }}
+                href="mailto:itspriyamsri@gmail.com"
+                className="inline-flex items-center gap-3 px-8 py-3 bg-[#4285F4] text-white border-2 border-black rounded-xl font-bold font-jakarta shadow-[4px_4px_0px_#000000] transition-all"
+              >
+                Email Me <Terminal size={20} />
+              </motion.a>
+            </div>
+
+            <div className="flex gap-4">
+              {[
+                { icon: <Terminal size={20} />, href: "mailto:itspriyamsri@gmail.com" },
+                { icon: <Github size={20} />, href: "https://github.com/itspriyamsri" },
+                { icon: <Linkedin size={20} />, href: "https://linkedin.com/in/itspriyamsri" }
+              ].map((social, idx) => (
+                <motion.a
+                  key={idx}
+                  whileHover={{ x: -2, y: -2, boxShadow: "6px 6px 0px #000000" }}
+                  transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                  href={social.href}
+                  className="p-3 bg-white border-2 border-black rounded-xl shadow-[4px_4px_0px_#000000] text-black hover:bg-[#F7D046] transition-colors"
+                >
+                  {social.icon}
+                </motion.a>
+              ))}
+            </div>
+          </motion.div>
+        </motion.div>
+
+        {/* Bottom Bar */}
+        <motion.div 
+          variants={itemVariants}
+          className="pt-10 border-t-2 border-black/10 flex flex-col md:flex-row justify-between items-center gap-8"
+        >
+          <div className="text-sm font-jakarta font-black uppercase tracking-widest text-black/40">
+            © 2026 PRIYAM SRIVASTAVA
           </div>
-          <p className="text-gray-600 font-jakarta font-bold text-lg">Building machines that scale.</p>
-        </div>
-        
-        <div className="flex items-center gap-6">
-          {[
-            { icon: <Terminal size={24} />, href: "mailto:itspriyamsri@gmail.com" },
-            { icon: <Github size={24} />, href: "https://github.com/itspriyamsri" },
-            { icon: <Linkedin size={24} />, href: "https://linkedin.com/in/itspriyamsri" }
-          ].map((link, idx) => (
-            <motion.a 
-              key={idx}
-              whileHover={{ y: -4, scale: 1.1, rotate: idx % 2 === 0 ? 5 : -5 }}
-              href={link.href} 
-              className="p-4 bg-white rounded-xl border-2 border-black shadow-[4px_4px_0px_#000000] hover:bg-[#F7D046] transition-colors"
-            >
-              {link.icon}
-            </motion.a>
-          ))}
-        </div>
+          
+          <div className="px-4 py-1.5 bg-white border-2 border-black rounded-full text-[10px] font-black uppercase tracking-[0.2em] text-black shadow-[3px_3px_0px_#000000]">
+            AVAILABLE FOR 2026 INTERNSHIPS
+          </div>
+
+          <div className="text-sm font-jakarta font-black uppercase tracking-widest text-black/40">
+            Crafted with React, Tailwind & Framer Motion
+          </div>
+        </motion.div>
       </div>
-      
-      <div className="mt-16 pt-8 border-t-2 border-black/10 flex flex-col md:flex-row justify-between items-center gap-4 text-sm font-jakarta font-black uppercase tracking-widest text-black/40">
-        <div>© 2026 Priyam Srivastava</div>
-        <div>Crafted with React, Tailwind & Framer Motion</div>
-      </div>
-    </div>
-  </footer>
-);
+    </footer>
+  );
+};
 
 // --- Main App ---
 
