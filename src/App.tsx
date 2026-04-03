@@ -94,15 +94,33 @@ const BrutalistCard: React.FC<{
   className?: string; 
   bgColor?: string;
   hasMockup?: boolean;
-}> = ({ children, className = "", bgColor = "bg-white", hasMockup = false }) => (
+  imgSrc?: string;
+}> = ({ children, className = "", bgColor = "bg-white", hasMockup = false, imgSrc }) => (
   <motion.div 
     whileHover={{ x: -2, y: -2, boxShadow: "8px 8px 0px #000000" }}
     transition={{ type: "spring", stiffness: 400, damping: 25 }}
     className={`p-6 border-2 border-black rounded-xl shadow-[6px_6px_0px_#000000] text-black ${bgColor} ${className}`}
   >
     {hasMockup && (
-      <div className="aspect-video bg-white/40 border-2 border-black rounded-lg mb-6 flex items-center justify-center shadow-inner overflow-hidden">
-        <span className="text-black/30 font-black text-xl uppercase tracking-tighter italic">Mockup Placeholder</span>
+      <div className="relative group/mockup overflow-hidden border-2 border-black rounded-lg mb-6 shadow-inner bg-white/40">
+        {/* macOS Style Window Header */}
+        <div className="h-6 bg-white/80 border-b-2 border-black flex items-center px-3 gap-1.5">
+          <div className="w-2.5 h-2.5 rounded-full bg-[#FF5F56] border border-black/20"></div>
+          <div className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E] border border-black/20"></div>
+          <div className="w-2.5 h-2.5 rounded-full bg-[#27C93F] border border-black/20"></div>
+        </div>
+        
+        <div className="aspect-video flex items-center justify-center overflow-hidden bg-gray-50/50">
+          {imgSrc ? (
+            <img 
+              src={imgSrc} 
+              alt="Project Mockup" 
+              className="w-full h-full object-cover transition-transform duration-500 group-hover/mockup:scale-105" 
+            />
+          ) : (
+            <span className="text-black/30 font-black text-xl uppercase tracking-tighter italic">Mockup Placeholder</span>
+          )}
+        </div>
       </div>
     )}
     {children}
@@ -235,6 +253,16 @@ const Hero = () => {
           <motion.a 
             whileHover={{ x: -2, y: -2, boxShadow: "8px 8px 0px #000000" }}
             whileTap={{ scale: 0.95 }}
+            href="https://drive.google.com/file/d/1i6RlG9hcbE8U8Htkj2s6WlB-RX_Vuux0/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-10 py-4 bg-[#F7D046] text-black border-2 border-black rounded-xl font-bold font-jakarta flex items-center gap-3 shadow-[4px_4px_0px_#000000] transition-all"
+          >
+            <Download size={22} /> Resume
+          </motion.a>
+          <motion.a 
+            whileHover={{ x: -2, y: -2, boxShadow: "8px 8px 0px #000000" }}
+            whileTap={{ scale: 0.95 }}
             href="mailto:itspriyamsri@gmail.com"
             className="px-10 py-4 bg-white text-black border-2 border-black rounded-xl font-bold font-jakarta flex items-center gap-3 shadow-[4px_4px_0px_#000000] transition-all"
           >
@@ -363,32 +391,36 @@ const Projects = () => {
 
   const mainProjects = [
     {
-      name: "CPPCloak",
-      desc: "LLVM-Based Code Obfuscator. Features C++ string encryption and a Python FastAPI bridge.",
-      tags: ["C++", "LLVM", "FastAPI", "Compiler"],
+      name: "AetherLearn",
+      desc: "AI Learning Platform with Docker containerization and scalable backend. Top 105 GSC.",
+      tags: ["Docker", "Firebase", "Node.js", "React"],
       color: "bg-[#5BB4E5]",
-      badge: "Security"
+      badge: "Top 105",
+      imgSrc: "/Aether-Learn.png"
     },
     {
       name: "Project SHIELD",
       desc: "IP Protection Platform monitoring 100+ sources. Automated DMCA generator via Gemini AI. 3rd Place @ HackCBS.",
       tags: ["TypeScript", "FastAPI", "Gemini AI", "MongoDB"],
       color: "bg-[#5FD974]",
-      badge: "Award Winner"
-    },
-    {
-      name: "AetherLearn",
-      desc: "AI Learning Platform with Docker containerization and scalable backend. Top 105 GSC.",
-      tags: ["Docker", "Firebase", "Node.js", "React"],
-      color: "bg-[#E878A8]",
-      badge: "Top 105"
+      badge: "Award Winner",
+      imgSrc: "/Project-SHIELD.png"
     },
     {
       name: "Saksham AI",
       desc: "Intelligent Recommendation Platform using NLP for personalized resource discovery.",
       tags: ["NLP", "Python", "React", "FastAPI"],
+      color: "bg-[#E878A8]",
+      badge: "AI/NLP",
+      imgSrc: "/Saksham-AI.png"
+    },
+    {
+      name: "CPPCloak",
+      desc: "LLVM-Based Code Obfuscator. Features C++ string encryption and a Python FastAPI bridge.",
+      tags: ["C++", "LLVM", "FastAPI", "Compiler"],
       color: "bg-[#F7D046]",
-      badge: "AI/NLP"
+      badge: "Security",
+      imgSrc: "/CPPCloak.png"
     }
   ];
 
@@ -435,7 +467,7 @@ const Projects = () => {
       >
         {mainProjects.map((p, idx) => (
           <motion.div key={idx} variants={itemVariants}>
-            <BrutalistCard bgColor={p.color} className="h-full flex flex-col" hasMockup>
+            <BrutalistCard bgColor={p.color} className="h-full flex flex-col" hasMockup imgSrc={p.imgSrc}>
               <div className="flex justify-between items-start mb-4">
                 <h3 className="text-3xl font-outfit font-bold text-black">{p.name}</h3>
                 <span className="px-3 py-1 bg-white border-2 border-black text-[10px] font-black rounded-full uppercase tracking-tighter shadow-[2px_2px_0px_#000000]">{p.badge}</span>
@@ -870,13 +902,16 @@ export default function App() {
               >
                 Get in Touch
               </motion.a>
-              <motion.button 
+              <motion.a 
                 whileHover={{ x: -2, y: -2, boxShadow: "8px 8px 0px #000000" }}
                 whileTap={{ scale: 0.95 }}
+                href="https://drive.google.com/file/d/1i6RlG9hcbE8U8Htkj2s6WlB-RX_Vuux0/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="px-10 py-5 bg-transparent text-black border-2 border-black rounded-xl font-bold font-jakarta text-lg shadow-[4px_4px_0px_#000000] flex items-center gap-3"
               >
                 <Download size={24} /> Resume
-              </motion.button>
+              </motion.a>
             </div>
           </BrutalistCard>
         </SectionWrapper>
