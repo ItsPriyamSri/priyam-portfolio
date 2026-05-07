@@ -155,7 +155,7 @@ const Navbar = () => (
       <div className="bg-white/70 backdrop-blur-xl border-2 border-black rounded-full px-6 py-3 flex justify-between items-center shadow-[4px_4px_0px_#000000]">
         <div className="flex items-center gap-2">
           <div className="w-8 h-8 rounded-lg bg-[#4285F4] border-2 border-black flex items-center justify-center text-white font-bold shadow-[2px_2px_0px_#000000]">PS</div>
-          <span className="font-outfit font-bold text-black hidden sm:block tracking-tight">PRIYAM.SRI</span>
+          <span className="font-outfit font-bold text-black hidden sm:block tracking-tight">ItsPriyamSri</span>
         </div>
         
         <div className="flex items-center gap-6 text-sm font-jakarta font-bold text-black">
