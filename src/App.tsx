@@ -12,7 +12,8 @@ import {
   Code2,
   Users,
   Award,
-  Globe
+  Globe,
+  X
 } from 'lucide-react';
 
 // --- Typewriter Hook ---
@@ -187,9 +188,9 @@ const Hero = () => {
 
   const typewriterText = useTypewriter([
     "Priyam Srivastava.", 
-    "a Systems Engineer.", 
     "a Full-Stack Developer.", 
-    "a Linux Enthusiast."
+    "an AI Agent Builder.", 
+    "a Backend Engineer."
   ]);
 
   return (
@@ -218,7 +219,7 @@ const Hero = () => {
           variants={itemVariants}
           className="inline-block px-4 py-1.5 mb-8 text-xs font-black tracking-[0.2em] text-black uppercase bg-[#F7D046] border-2 border-black rounded-full font-jakarta shadow-[3px_3px_0px_#000000]"
         >
-          Available for 2026 Internships
+          🚀 Open to SWE / AI Internships · Summer 2026
         </motion.span>
         
         <motion.h1 
@@ -233,7 +234,7 @@ const Hero = () => {
           variants={itemVariants}
           className="text-xl md:text-2xl font-jakarta font-bold text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed"
         >
-          "Bridging the gap between clean user interfaces and low-level system architecture. Passionate about Linux internals, scalable AI, and writing both the paint and the plumbing."
+          "I build full-stack web products and AI-powered agents — from MERN backends to LLM pipelines. Passionate about shipping fast, learning deep, and making things that actually work."
         </motion.p>
         
         <motion.div 
@@ -278,31 +279,30 @@ const TheJourney = () => (
   <SectionWrapper className="py-24 px-12 container mx-auto">
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
       <div className="space-y-8">
-        <h2 className="text-5xl md:text-6xl font-outfit font-bold text-black tracking-tight leading-none">
-          The <span className="text-[#E878A8]">Journey</span>
-        </h2>
-        <div className="space-y-6 text-xl font-jakarta text-gray-800 leading-relaxed">
-          <p>
-            B.Tech CSE at AKTU (2027). I work from Linux internals and C++ systems all the way up to full-stack MERN apps and AI integrations — not as separate tracks, but as one way of thinking. I lead GDG on Campus SRMCEM, where I've run 15+ events and scaled a hackathon to 6 venues across Lucknow. I like understanding how things work at every layer, and then building on top of that.
+        <div className="text-center space-y-6">
+          <h2 className="text-5xl md:text-6xl font-outfit font-bold text-black tracking-tight leading-none">
+            The <span className="text-[#E878A8]">Journey</span>
+          </h2>
+          <p className="text-xl font-jakarta text-gray-800 leading-relaxed max-w-3xl mx-auto">
+            B.Tech CSE at AKTU (2027). I build full-stack web apps, REST APIs, and AI-powered products — and I understand the systems underneath them. I lead GDG on Campus SRMCEM, organising 15+ events and scaling a city-wide AI hackathon to 6 venues across Lucknow. I like shipping things that work at every layer.
           </p>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
-            {[
-              { title: "🥉 3rd Place @ HackCBS 8.0", sub: "India's largest student-run hackathon", color: "bg-[#FFF0F0]" },
-              { title: "🌐 Top 105 @ Solution Challenge 2025", sub: "Among 3000+ teams nationwide", color: "bg-[#DDF4FD]" },
-              { title: "🐧 Linux & Systems Engineering", sub: "C++, Python, CLI lover", color: "bg-[#E6FEEA]" },
-              { title: "📅 Lead community of 1500+ developers", sub: "GDG on Campus SRMCEM", color: "bg-[#FEFCE8]" },
-            ].map((metric, i) => (
-              <motion.div
-                key={i}
-                whileHover={{ y: -5 }}
-                className={`${metric.color} px-6 py-4 rounded-full border-2 border-black/5 flex flex-col items-center justify-center text-center shadow-sm`}
-              >
-                <span className="font-outfit font-bold text-base text-black leading-tight">{metric.title}</span>
-                <span className="font-jakarta text-[10px] font-bold uppercase tracking-wider text-gray-500 mt-1">{metric.sub}</span>
-              </motion.div>
-            ))}
-          </div>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+          {[
+            { title: "🥉 3rd Place @ HackCBS 8.0", sub: "India's largest student-run hackathon", color: "bg-[#FFF0F0]" },
+            { title: "🌐 Top 105 @ Solution Challenge 2025", sub: "Among 3000+ teams nationwide", color: "bg-[#DDF4FD]" },
+            { title: "⚡ MERN + AI Agents", sub: "React, Node.js, Python, LLMs", color: "bg-[#E6FEEA]" },
+            { title: "📅 Lead community of 1500+ developers", sub: "GDG on Campus SRMCEM", color: "bg-[#FEFCE8]" },
+          ].map((metric, i) => (
+            <motion.div
+              key={i}
+              whileHover={{ y: -5 }}
+              className={`${metric.color} px-6 py-4 rounded-full border-2 border-black/5 flex flex-col items-center justify-center text-center shadow-sm`}
+            >
+              <span className="font-outfit font-bold text-base text-black leading-tight">{metric.title}</span>
+              <span className="font-jakarta text-[10px] font-bold uppercase tracking-wider text-gray-500 mt-1">{metric.sub}</span>
+            </motion.div>
+          ))}
         </div>
       </div>
       
@@ -315,16 +315,24 @@ const TheJourney = () => (
           y: { duration: 4, repeat: Infinity, ease: "easeInOut" }
         }}
         viewport={{ once: true }}
-        className="relative group max-w-[95%] mx-auto"
+        className="relative group max-w-[85%] mx-auto"
       >
-        <div className="aspect-square bg-[#F7D046] border-4 border-black rounded-[2.5rem] shadow-[12px_12px_0px_#000000] flex items-center justify-center overflow-hidden">
-          <Code2 size={120} className="text-black/20 absolute -bottom-4 -right-4 rotate-12" />
-          <Terminal size={120} className="text-black/10 absolute top-10 left-10 -rotate-12" />
-          <div className="p-12 text-center relative z-10">
-            <span className="text-8xl">🚀</span>
-            <p className="mt-6 font-outfit font-bold text-2xl uppercase tracking-widest text-black">Keep Moving Forward</p>
-          </div>
+        <div className="aspect-square border-4 border-black rounded-[2.5rem] shadow-[12px_12px_0px_#000000] overflow-hidden bg-[#F7D046]">
+          <img 
+            src="/Priyam-pic.jpeg" 
+            alt="Priyam Srivastava" 
+            className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+          />
         </div>
+        <motion.div 
+          whileHover={{ scale: 1.05, rotate: -5 }}
+          className="absolute -bottom-6 -left-6 md:-left-12 bg-[#F7D046] p-6 border-4 border-black rounded-2xl shadow-[8px_8px_0px_#000000] -rotate-6 z-10 max-w-[200px] text-center"
+        >
+          <span className="text-4xl block mb-2">🐧</span>
+          <p className="font-outfit font-bold text-lg text-black leading-snug normal-case">
+            I use Linux btw
+          </p>
+        </motion.div>
       </motion.div>
     </div>
   </SectionWrapper>
@@ -346,28 +354,28 @@ const TechnicalExpertise = () => (
     >
       {[
         { 
-          title: "Full-Stack/Frameworks", 
+          title: "Full-Stack Web", 
           icon: <Layers size={28} />, 
           color: "bg-[#DDF4FD]", 
-          skills: ["React", "TypeScript", "JavaScript", "Node.js", "Express", "Firebase", "Tailwind CSS", "MongoDB", "SQL"] 
+          skills: ["React", "Next.js", "TypeScript", "Node.js", "Express", "MongoDB", "REST APIs", "Firebase"] 
         },
         { 
-          title: "Automation", 
+          title: "Backend & DevOps", 
           icon: <Terminal size={28} />, 
           color: "bg-[#E6FEEA]", 
-          skills: ["Python", "Bash", "Shell Scripting", "Docker", "GCP", "Jupyter", "FastAPI", "REST APIs"] 
+          skills: ["Python", "FastAPI", "Docker", "GCP", "Bash", "Redis", "PostgreSQL", "Render"] 
         },
         { 
-          title: "AI & Security", 
+          title: "AI / Agents", 
           icon: <Zap size={28} />, 
           color: "bg-[#FFF0F0]", 
-          skills: ["RAG Systems", "NLP", "LLM Integration", "Perplexity API", "AI Agents", "Prompt Eng", "Gemini API", "LLMs", "Cybersecurity"] 
+          skills: ["LangChain", "RAG", "Gemini API", "OpenAI API", "AI Agents", "Prompt Eng", "NLP", "LLM Pipelines"] 
         },
         { 
           title: "Systems & Tools", 
           icon: <Cpu size={28} />, 
           color: "bg-[#FEFCE8]", 
-          skills: ["C++", "C", "Linux Internals", "Networking", "Git/GitHub", "VS Code", "OS Design", "SysAdmin"] 
+          skills: ["C++", "Linux", "Git", "VS Code", "Postman", "Vite", "Vercel", "Cybersecurity"] 
         }
       ].map((cat, idx) => (
         <motion.div key={idx} variants={itemVariants}>
@@ -386,75 +394,228 @@ const TechnicalExpertise = () => (
   </SectionWrapper>
 );
 
+export interface Project {
+  name: string;
+  badge: string;
+  color: string;
+  accentHex: string;
+  desc: string;
+  fullDesc: string;
+  tags: string[];
+  githubUrl: string;
+  liveUrl?: string;
+  imgSrc?: string;
+}
+
+const ProjectModal: React.FC<{
+  project: Project;
+  onClose: () => void;
+}> = ({ project, onClose }) => {
+  useEffect(() => {
+    const handleEsc = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', handleEsc);
+    return () => window.removeEventListener('keydown', handleEsc);
+  }, [onClose]);
+
+  return (
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        onClick={onClose}
+        className="absolute inset-0 bg-black/40 backdrop-blur-sm cursor-pointer"
+      />
+      <motion.div 
+        initial={{ opacity: 0, scale: 0.95, y: 20 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.95, y: 20 }}
+        className="relative w-full max-w-2xl bg-white border-4 border-black rounded-2xl shadow-[12px_12px_0px_#000000] overflow-hidden flex flex-col max-h-[90vh]"
+        style={{ borderTopColor: project.accentHex, borderTopWidth: '8px' }}
+      >
+        <div className="flex justify-between items-start p-6 pb-2 border-b-2 border-black/10">
+          <div>
+            <span className="px-3 py-1 bg-white border-2 border-black text-[10px] font-black rounded-full uppercase tracking-tighter shadow-[2px_2px_0px_#000000] mb-3 inline-block">
+              {project.badge}
+            </span>
+            <h3 className="text-3xl sm:text-4xl font-outfit font-bold text-black leading-tight">
+              {project.name}
+            </h3>
+          </div>
+          <button 
+            onClick={onClose}
+            className="p-2 bg-gray-100 hover:bg-[#FF5F56] hover:text-white border-2 border-transparent hover:border-black rounded-full transition-all"
+          >
+            <X size={24} />
+          </button>
+        </div>
+
+        <div className="p-6 overflow-y-auto">
+          <p className="text-lg font-jakarta font-medium text-gray-800 leading-relaxed mb-8">
+            {project.fullDesc}
+          </p>
+
+          <div className="mb-8">
+            <h4 className="text-sm font-outfit font-black uppercase tracking-widest text-black/40 mb-3">Tech Stack</h4>
+            <div className="flex flex-wrap gap-2">
+              {project.tags.map(t => (
+                <span key={t} className="text-xs font-black uppercase tracking-widest px-3 py-1.5 bg-gray-100 border border-black/20 rounded-md">
+                  {t}
+                </span>
+              ))}
+            </div>
+          </div>
+          
+          <div className="flex flex-wrap gap-4 pt-4 border-t-2 border-black/10">
+            {project.liveUrl && (
+              <a 
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-6 py-3 bg-[#4285F4] text-white font-bold font-jakarta border-2 border-black rounded-xl shadow-[4px_4px_0px_#000000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000000] transition-all"
+              >
+                <Globe size={20} /> Live Demo
+              </a>
+            )}
+            <a 
+              href={project.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-6 py-3 bg-white text-black font-bold font-jakarta border-2 border-black rounded-xl shadow-[4px_4px_0px_#000000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000000] transition-all"
+            >
+              <Github size={20} /> Repository
+            </a>
+          </div>
+        </div>
+      </motion.div>
+    </div>
+  );
+};
+
 const Projects = () => {
   const [showSandbox, setShowSandbox] = useState(false);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
-  const mainProjects = [
+  const mainProjects: Project[] = [
+    {
+      name: "Lucknow Tech Events",
+      desc: "A full-stack, open-source event aggregator for the Lucknow tech scene — featuring an admin dashboard, IST-aware event scheduling, and a Render-hosted backend.",
+      fullDesc: "Built a production-grade MERN stack platform to surface and manage tech events in Lucknow. Features an admin mission-control dashboard for event CRUD with datetime-local editing (IST-aware), a publicly accessible event feed, and a persistent Express backend on Render with a 20-second heartbeat to prevent cold-starts. Deployed frontend on Vercel. Fully open-source.",
+      tags: ["React", "Node.js", "Express", "MongoDB", "Vercel", "Render"],
+      color: "bg-[#A78BFA]",
+      accentHex: "#A78BFA",
+      badge: "Full-Stack",
+      githubUrl: "https://github.com/itspriyamsri/lucknow-tech-events",
+      liveUrl: "https://lucknow-tech-events.vercel.app",
+      imgSrc: "/Lucknow-Events.png"
+    },
+    {
+      name: "Obsidian Eye",
+      desc: "AI-powered media fingerprinting platform detecting digital piracy with dual-signal perceptual hashing and a Gemini-AI DMCA generator.",
+      fullDesc: "Obsidian Eye is an agentic AI platform for digital media rights enforcement. It combines perceptual image hashing with an AI fingerprinting pipeline to identify unauthorized copies across the web. A Gemini-powered backend auto-generates DMCA takedown notices. Built with a Next.js frontend deployed on Vercel and a FastAPI Python backend.",
+      tags: ["Next.js", "FastAPI", "Python", "Gemini AI", "Vercel", "Docker"],
+      color: "bg-[#FB923C]",
+      accentHex: "#FB923C",
+      badge: "AI Agent",
+      githubUrl: "https://github.com/itspriyamsri/obsidian-eye",
+      liveUrl: "https://obsidian-eye.vercel.app",
+      imgSrc: "/Obsidian-EYE.png"
+    },
     {
       name: "AetherLearn",
       desc: "AI Learning Platform with Docker containerization and scalable backend. Top 105 GSC.",
+      fullDesc: "AetherLearn is an AI-powered educational platform designed to provide accessible learning resources. It uses Docker for containerized deployment, ensuring a scalable and resilient backend architecture. Recognized nationally by ranking in the Top 105 for the Google Solution Challenge 2025.",
       tags: ["Docker", "Firebase", "Node.js", "React"],
       color: "bg-[#5BB4E5]",
+      accentHex: "#5BB4E5",
       badge: "Top 105",
+      githubUrl: "https://github.com/itspriyamsri/aether-learn",
       imgSrc: "/Aether-Learn.png"
     },
     {
       name: "Project SHIELD",
       desc: "IP Protection Platform monitoring 100+ sources. Automated DMCA generator via Gemini AI. 3rd Place @ HackCBS.",
+      fullDesc: "Project SHIELD offers automated intellectual property protection. It scrapes and monitors over 100 sources for copyright infringement, leveraging Gemini AI to automatically generate and format DMCA takedown notices. This project secured the 3rd Place out of thousands at HackCBS 8.0.",
       tags: ["TypeScript", "FastAPI", "Gemini AI", "MongoDB"],
       color: "bg-[#5FD974]",
+      accentHex: "#5FD974",
       badge: "Award Winner",
+      githubUrl: "https://github.com/itspriyamsri/project-shield",
       imgSrc: "/Project-SHIELD.png"
     },
     {
       name: "Saksham AI",
       desc: "Intelligent Recommendation Platform using NLP for personalized resource discovery.",
+      fullDesc: "Saksham AI applies Natural Language Processing to build an intelligent recommendation engine. By analyzing user queries and preferences, it dynamically curates and suggests personalized resources, streamlining the discovery process.",
       tags: ["NLP", "Python", "React", "FastAPI"],
       color: "bg-[#E878A8]",
+      accentHex: "#E878A8",
       badge: "AI/NLP",
+      githubUrl: "https://github.com/itspriyamsri/saksham-ai",
       imgSrc: "/Saksham-AI.png"
     },
     {
       name: "CPPCloak",
       desc: "LLVM-Based Code Obfuscator. Features C++ string encryption and a Python FastAPI bridge.",
+      fullDesc: "CPPCloak is a security-focused compiler tool based on LLVM. It applies advanced obfuscation techniques, including robust C++ string encryption, to protect proprietary source code. The core logic interfaces with a modern Python FastAPI backend for ease of integration.",
       tags: ["C++", "LLVM", "FastAPI", "Compiler"],
       color: "bg-[#F7D046]",
+      accentHex: "#F7D046",
       badge: "Security",
+      githubUrl: "https://github.com/itspriyamsri/cppcloak",
       imgSrc: "/CPPCloak.png"
     }
   ];
 
-  const sandboxProjects = [
+  const sandboxProjects: Project[] = [
     {
       name: "FluxSort",
       desc: "Cross-platform Python automation script with a logging/revert system for intelligent file directory management.",
+      fullDesc: "FluxSort is a comprehensive Python automation tool that intelligently organizes and manages file directories across different operating systems. It includes a robust logging mechanism and a revert system to ensure safe operations.",
       tags: ["Python", "Automation", "CLI"],
-      color: "bg-[#DDF4FD]"
+      color: "bg-[#DDF4FD]",
+      accentHex: "#5BB4E5",
+      badge: "Sandbox",
+      githubUrl: "https://github.com/itspriyamsri/fluxsort"
     },
     {
       name: "Dungeon Escape",
       desc: "Pure C++ CLI-based terminal adventure game featuring custom logic and ASCII art.",
+      fullDesc: "A nostalgic text-based adventure game built entirely in C++. Dungeon Escape features custom game logic, inventory systems, and extensive ASCII art, offering a classic terminal gaming experience.",
       tags: ["C++", "Game Dev", "CLI"],
-      color: "bg-[#E6FEEA]"
+      color: "bg-[#E6FEEA]",
+      accentHex: "#5FD974",
+      badge: "Sandbox",
+      githubUrl: "https://github.com/itspriyamsri/dungeon-escape"
     },
     {
       name: "Project Sentinel",
       desc: "Python-based system resource monitor featuring a CLI interface inspired by Linux btop.",
+      fullDesc: "Project Sentinel provides real-time monitoring of system resources using Python. Its rich CLI interface draws inspiration from Linux's btop, delivering performance metrics in an easy-to-read, terminal-friendly layout.",
       tags: ["Python", "System", "CLI"],
-      color: "bg-[#FDE7F0]"
+      color: "bg-[#FDE7F0]",
+      accentHex: "#E878A8",
+      badge: "Sandbox",
+      githubUrl: "https://github.com/itspriyamsri/project-sentinel"
     },
     {
       name: "AppSentinel",
       desc: "TypeScript front-end prototype designed to scan and match security certificates of banking APKs.",
+      fullDesc: "AppSentinel is a FinTech security prototype built with TypeScript. It provides a clean interface to scan, verify, and match security certificates for Android banking applications to detect tampering.",
       tags: ["TypeScript", "Security", "FinTech"],
-      color: "bg-[#FFF9E5]"
+      color: "bg-[#FFF9E5]",
+      accentHex: "#F7D046",
+      badge: "Sandbox",
+      githubUrl: "https://github.com/itspriyamsri/app-sentinel"
     }
   ];
 
   return (
     <SectionWrapper id="projects" className="py-24 px-10 container mx-auto">
       <div className="flex flex-col items-center mb-16">
-        <h2 className="text-4xl md:text-5xl font-outfit font-bold text-black mb-4">Engineering Projects</h2>
+        <h2 className="text-4xl md:text-5xl font-outfit font-bold text-black mb-4">Projects</h2>
         <div className="h-2 w-24 bg-[#E878A8] border-2 border-black rounded-full shadow-[2px_2px_0px_#000000]"></div>
       </div>
 
@@ -463,30 +624,30 @@ const Projects = () => {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className="grid grid-cols-1 md:grid-cols-2 gap-10"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
       >
         {mainProjects.map((p, idx) => (
           <motion.div key={idx} variants={itemVariants}>
-            <BrutalistCard bgColor={p.color} className="h-full flex flex-col" hasMockup imgSrc={p.imgSrc}>
-              <div className="flex justify-between items-start mb-4">
-                <h3 className="text-3xl font-outfit font-bold text-black">{p.name}</h3>
-                <span className="px-3 py-1 bg-white border-2 border-black text-[10px] font-black rounded-full uppercase tracking-tighter shadow-[2px_2px_0px_#000000]">{p.badge}</span>
-              </div>
-              <p className="text-black font-jakarta font-semibold mb-6 flex-grow leading-snug">
-                {p.desc}
-              </p>
-              <div className="flex flex-wrap gap-2 mb-8">
-                {p.tags.map(t => (
-                  <span key={t} className="text-[10px] font-black uppercase tracking-widest px-2 py-1 bg-white/50 border border-black rounded">{t}</span>
-                ))}
-              </div>
-              <motion.button 
-                whileHover={{ x: 2 }}
-                className="flex items-center gap-2 font-black text-black uppercase text-sm tracking-widest group"
-              >
-                View Repository <ExternalLink size={18} className="group-hover:translate-x-1 transition-transform" />
-              </motion.button>
-            </BrutalistCard>
+            <div onClick={() => setSelectedProject(p)} className="cursor-pointer h-full">
+              <BrutalistCard bgColor={p.color} className="h-full flex flex-col transition-transform hover:-translate-y-1" hasMockup={!!p.imgSrc} imgSrc={p.imgSrc}>
+                <div className="flex justify-between items-start mb-4">
+                  <h3 className="text-2xl font-outfit font-bold text-black">{p.name}</h3>
+                  <span className="px-3 py-1 bg-white border-2 border-black text-[10px] font-black rounded-full uppercase tracking-tighter shadow-[2px_2px_0px_#000000] whitespace-nowrap ml-2">{p.badge}</span>
+                </div>
+                <p className="text-black font-jakarta font-semibold mb-6 flex-grow leading-snug">
+                  {p.desc}
+                </p>
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {p.tags.slice(0, 4).map(t => (
+                    <span key={t} className="text-[10px] font-black uppercase tracking-widest px-2 py-1 bg-white/50 border border-black rounded">{t}</span>
+                  ))}
+                  {p.tags.length > 4 && <span className="text-[10px] font-black uppercase tracking-widest px-2 py-1 bg-white/50 border border-black rounded">+{p.tags.length - 4}</span>}
+                </div>
+                <div className="flex items-center gap-2 font-black text-black uppercase text-sm tracking-widest group mt-auto">
+                  View Details <ExternalLink size={18} className="group-hover:translate-x-1 transition-transform" />
+                </div>
+              </BrutalistCard>
+            </div>
           </motion.div>
         ))}
       </motion.div>
@@ -509,15 +670,20 @@ const Projects = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: idx * 0.1 }}
                   >
-                    <BrutalistCard bgColor={p.color} className="h-full flex flex-col">
-                      <h4 className="text-xl font-outfit font-bold text-black mb-2">{p.name}</h4>
-                      <p className="text-sm font-jakarta font-medium text-gray-800 mb-4 flex-grow">{p.desc}</p>
-                      <div className="flex flex-wrap gap-2">
-                        {p.tags.map(t => (
-                          <span key={t} className="text-[10px] font-black uppercase tracking-widest px-2 py-0.5 bg-white/50 border border-black rounded">{t}</span>
-                        ))}
-                      </div>
-                    </BrutalistCard>
+                    <div onClick={() => setSelectedProject(p)} className="cursor-pointer h-full">
+                      <BrutalistCard bgColor={p.color} className="h-full flex flex-col transition-transform hover:-translate-y-1">
+                        <h4 className="text-xl font-outfit font-bold text-black mb-2">{p.name}</h4>
+                        <p className="text-sm font-jakarta font-medium text-gray-800 mb-4 flex-grow">{p.desc}</p>
+                        <div className="flex flex-wrap gap-2 mb-4">
+                          {p.tags.map(t => (
+                            <span key={t} className="text-[10px] font-black uppercase tracking-widest px-2 py-0.5 bg-white/50 border border-black rounded">{t}</span>
+                          ))}
+                        </div>
+                        <div className="flex items-center gap-1 font-black text-black uppercase text-xs tracking-widest group mt-auto">
+                          View Details <ExternalLink size={14} className="group-hover:translate-x-1 transition-transform" />
+                        </div>
+                      </BrutalistCard>
+                    </div>
                   </motion.div>
                 ))}
               </div>
@@ -534,6 +700,15 @@ const Projects = () => {
           {showSandbox ? "Show less" : "Explore Other Projects"}
         </motion.button>
       </div>
+
+      <AnimatePresence>
+        {selectedProject && (
+          <ProjectModal 
+            project={selectedProject} 
+            onClose={() => setSelectedProject(null)} 
+          />
+        )}
+      </AnimatePresence>
     </SectionWrapper>
   );
 };
@@ -788,7 +963,7 @@ const Footer = () => {
               <span className="text-3xl font-outfit font-bold text-black tracking-tighter">Priyam Srivastava</span>
             </div>
             <p className="text-gray-600 font-jakarta font-bold text-lg leading-relaxed max-w-sm">
-              Building high-performance engines and intuitive interfaces. Bridging the paint and the plumbing.
+              Building full-stack products and AI-powered agents. From the API to the UI.
             </p>
           </motion.div>
 
@@ -889,13 +1064,13 @@ export default function App() {
         
         <SectionWrapper className="py-24 px-6 text-center container mx-auto">
           <BrutalistCard bgColor="bg-[#F7D046]" className="max-w-4xl mx-auto py-16">
-            <h2 className="text-5xl font-outfit font-bold text-black mb-8 leading-none">Let's build the <span className="underline decoration-black decoration-4 underline-offset-8">Future</span> of Systems.</h2>
+            <h2 className="text-5xl font-outfit font-bold text-black mb-8 leading-none">Let's build something the <span className="underline decoration-black decoration-4 underline-offset-8">web</span> hasn't seen yet.</h2>
             <p className="text-2xl font-jakarta font-bold text-black/80 mb-12 max-w-2xl mx-auto">
-              Currently looking for summer internships and collaborative engineering roles.
+              Open to full-stack and AI engineering internships for Summer 2026.
             </p>
             <div className="flex flex-wrap justify-center gap-6">
               <motion.a 
-                whileHover={{ x: -2, y: -2, boxShadow: "8px 8px 0px #000000" }}
+                whileHover={{ x: -2, y: -2, boxShadow: "8px 8px 0px #4285F4" }}
                 whileTap={{ scale: 0.95 }}
                 href="mailto:itspriyamsri@gmail.com"
                 className="px-10 py-5 bg-black text-white border-2 border-black rounded-xl font-bold font-jakarta text-lg shadow-[4px_4px_0px_#4285F4] flex items-center gap-3"

@@ -1,73 +1,43 @@
-# React + TypeScript + Vite
+# Priyam's Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to my personal portfolio repository! This project serves as a showcase of my skills, projects, and professional journey, tailored towards Full-Stack Engineering and AI Agent-based opportunities.
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+This portfolio is designed with a modern, dynamic UI to highlight my work in web development and artificial intelligence. It features interactive project modals, responsive layouts, and a curated narrative reflecting my passion for building intelligent and scalable applications.
 
-## React Compiler
+### Key Projects Featured
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+*   **Obsidian Eye:** A dual-signal AI fingerprinting architecture designed to combat digital media piracy through an "intelligence network".
+*   **Lucknow Tech Events:** A platform for discovering and managing tech events, built with modern full-stack technologies.
+*   **Rocky AI Companion:** A localized AI desktop application integrating Text-to-Speech engines for persona-driven, seamless conversational experiences.
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+*   **Frontend:** React, TypeScript, Vite
+*   **Styling:** Tailwind CSS, Framer Motion (for animations)
+*   **Deployment:** Vercel
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Running Locally
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+To run this project on your local machine:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+1.  Clone the repository:
+    ```bash
+    git clone https://github.com/ItsPriyamSri/priyam-portfolio.git
+    cd priyam-portfolio
+    ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2.  Install dependencies:
+    ```bash
+    npm install
+    ```
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+3.  Start the development server:
+    ```bash
+    npm run dev
+    ```
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Contact
+
+Feel free to reach out to me regarding internships or exciting collaborative opportunities!
