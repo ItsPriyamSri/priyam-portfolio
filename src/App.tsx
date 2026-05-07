@@ -165,7 +165,8 @@ const Navbar = () => (
           <motion.a 
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            href="mailto:itspriyamsri@gmail.com" 
+            transition={{ type: "spring", stiffness: 400, damping: 25 }}
+            href="mailto:priyamsrivastava33347@gmail.com" 
             className="px-5 py-2 bg-[#4285F4] text-white rounded-full border-2 border-black shadow-[2px_2px_0px_#000000]"
           >
             Contact
@@ -175,6 +176,69 @@ const Navbar = () => (
     </div>
   </nav>
 );
+
+const ScrollIndicator = () => {
+  const [activeSection, setActiveSection] = useState('hero');
+  
+  const sections = [
+    { id: 'hero', color: 'bg-[#5BB4E5]', label: 'Hero' },
+    { id: 'journey', color: 'bg-[#5FD974]', label: 'Journey' },
+    { id: 'skills', color: 'bg-[#E878A8]', label: 'Skills' },
+    { id: 'projects', color: 'bg-[#F7D046]', label: 'Projects' },
+    { id: 'experience', color: 'bg-[#A78BFA]', label: 'Experience' },
+    { id: 'certifications', color: 'bg-[#FB923C]', label: 'Certifications' }
+  ];
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + window.innerHeight / 3;
+      
+      for (const section of [...sections].reverse()) {
+        const element = document.getElementById(section.id);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          if (rect.top + window.scrollY <= scrollPosition) {
+            setActiveSection(section.id);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollTo = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  return (
+    <div className="fixed right-3 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-3 pointer-events-auto mix-blend-difference xl:mix-blend-normal">
+      {sections.map((section) => {
+        const isActive = activeSection === section.id;
+        return (
+          <button
+            key={section.id}
+            onClick={() => scrollTo(section.id)}
+            title={section.label}
+            className={`w-2 rounded-full transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+              isActive 
+                ? `h-10 ${section.color} border-2 border-black shadow-[2px_2px_0px_#000000]` 
+                : 'h-2 bg-black/30 hover:bg-black/60 xl:bg-black/20 xl:hover:bg-black/40'
+            }`}
+            aria-label={`Scroll to ${section.label}`}
+          />
+        );
+      })}
+    </div>
+  );
+};
+
 
 const Hero = () => {
   const mouseX = useMotionValue(0);
@@ -195,6 +259,7 @@ const Hero = () => {
 
   return (
     <section 
+      id="hero"
       onMouseMove={handleMouseMove}
       className="min-h-[95vh] flex flex-col items-center justify-center text-center px-6 pt-32 pb-20 relative overflow-hidden bg-slate-50 border-b-4 border-black"
     >
@@ -244,30 +309,35 @@ const Hero = () => {
           <motion.a 
             whileHover={{ x: -2, y: -2, boxShadow: "8px 8px 0px #000000" }}
             whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 400, damping: 25 }}
             href="https://github.com/itspriyamsri" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="px-10 py-4 bg-[#4285F4] text-white border-2 border-black rounded-xl font-bold font-jakarta flex items-center gap-3 shadow-[4px_4px_0px_#000000] transition-all"
+            className="px-10 py-4 bg-[#4285F4] text-white border-2 border-black rounded-xl font-bold font-jakarta flex items-center gap-3 shadow-[4px_4px_0px_#000000]"
           >
             <Github size={22} /> View GitHub
           </motion.a>
           <motion.a 
             whileHover={{ x: -2, y: -2, boxShadow: "8px 8px 0px #000000" }}
             whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 400, damping: 25 }}
             href="https://drive.google.com/file/d/1i6RlG9hcbE8U8Htkj2s6WlB-RX_Vuux0/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-10 py-4 bg-[#F7D046] text-black border-2 border-black rounded-xl font-bold font-jakarta flex items-center gap-3 shadow-[4px_4px_0px_#000000] transition-all"
+            className="px-10 py-4 bg-[#F7D046] text-black border-2 border-black rounded-xl font-bold font-jakarta flex items-center gap-3 shadow-[4px_4px_0px_#000000]"
           >
             <Download size={22} /> Resume
           </motion.a>
           <motion.a 
             whileHover={{ x: -2, y: -2, boxShadow: "8px 8px 0px #000000" }}
             whileTap={{ scale: 0.95 }}
-            href="mailto:itspriyamsri@gmail.com"
-            className="px-10 py-4 bg-white text-black border-2 border-black rounded-xl font-bold font-jakarta flex items-center gap-3 shadow-[4px_4px_0px_#000000] transition-all"
+            transition={{ type: "spring", stiffness: 400, damping: 25 }}
+            href="https://linkedin.com/in/itspriyamsri"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-10 py-4 bg-white text-black border-2 border-black rounded-xl font-bold font-jakarta flex items-center gap-3 shadow-[4px_4px_0px_#000000]"
           >
-            Contact Me
+            <Linkedin size={22} /> LinkedIn
           </motion.a>
         </motion.div>
       </motion.div>
@@ -276,7 +346,7 @@ const Hero = () => {
 };
 
 const TheJourney = () => (
-  <SectionWrapper className="py-24 px-12 container mx-auto">
+  <SectionWrapper id="journey" className="py-24 px-12 container mx-auto">
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
       <div className="space-y-8">
         <div className="text-center space-y-6">
@@ -339,7 +409,7 @@ const TheJourney = () => (
 );
 
 const TechnicalExpertise = () => (
-  <SectionWrapper className="py-24 px-10 container mx-auto">
+  <SectionWrapper id="skills" className="py-24 px-10 container mx-auto">
     <div className="flex flex-col items-center mb-16">
       <h2 className="text-4xl md:text-5xl font-outfit font-bold text-black mb-4">Technical Expertise</h2>
       <div className="h-2 w-24 bg-[#5FD974] border-2 border-black rounded-full shadow-[2px_2px_0px_#000000]"></div>
@@ -504,8 +574,8 @@ const Projects = () => {
       desc: "A full-stack, open-source event aggregator for the Lucknow tech scene — featuring an admin dashboard, IST-aware event scheduling, and a Render-hosted backend.",
       fullDesc: "Built a production-grade MERN stack platform to surface and manage tech events in Lucknow. Features an admin mission-control dashboard for event CRUD with datetime-local editing (IST-aware), a publicly accessible event feed, and a persistent Express backend on Render with a 20-second heartbeat to prevent cold-starts. Deployed frontend on Vercel. Fully open-source.",
       tags: ["React", "Node.js", "Express", "MongoDB", "Vercel", "Render"],
-      color: "bg-[#A78BFA]",
-      accentHex: "#A78BFA",
+      color: "bg-[#5BB4E5]",
+      accentHex: "#5BB4E5",
       badge: "Full-Stack",
       githubUrl: "https://github.com/itspriyamsri/lucknow-tech-events",
       liveUrl: "https://lucknow-tech-events.vercel.app",
@@ -516,8 +586,8 @@ const Projects = () => {
       desc: "AI-powered media fingerprinting platform detecting digital piracy with dual-signal perceptual hashing and a Gemini-AI DMCA generator.",
       fullDesc: "Obsidian Eye is an agentic AI platform for digital media rights enforcement. It combines perceptual image hashing with an AI fingerprinting pipeline to identify unauthorized copies across the web. A Gemini-powered backend auto-generates DMCA takedown notices. Built with a Next.js frontend deployed on Vercel and a FastAPI Python backend.",
       tags: ["Next.js", "FastAPI", "Python", "Gemini AI", "Vercel", "Docker"],
-      color: "bg-[#FB923C]",
-      accentHex: "#FB923C",
+      color: "bg-[#5FD974]",
+      accentHex: "#5FD974",
       badge: "AI Agent",
       githubUrl: "https://github.com/itspriyamsri/obsidian-eye",
       liveUrl: "https://obsidian-eye.vercel.app",
@@ -528,8 +598,8 @@ const Projects = () => {
       desc: "AI Learning Platform with Docker containerization and scalable backend. Top 105 GSC.",
       fullDesc: "AetherLearn is an AI-powered educational platform designed to provide accessible learning resources. It uses Docker for containerized deployment, ensuring a scalable and resilient backend architecture. Recognized nationally by ranking in the Top 105 for the Google Solution Challenge 2025.",
       tags: ["Docker", "Firebase", "Node.js", "React"],
-      color: "bg-[#5BB4E5]",
-      accentHex: "#5BB4E5",
+      color: "bg-[#E878A8]",
+      accentHex: "#E878A8",
       badge: "Top 105",
       githubUrl: "https://github.com/itspriyamsri/aether-learn",
       imgSrc: "/Aether-Learn.png"
@@ -539,8 +609,8 @@ const Projects = () => {
       desc: "IP Protection Platform monitoring 100+ sources. Automated DMCA generator via Gemini AI. 3rd Place @ HackCBS.",
       fullDesc: "Project SHIELD offers automated intellectual property protection. It scrapes and monitors over 100 sources for copyright infringement, leveraging Gemini AI to automatically generate and format DMCA takedown notices. This project secured the 3rd Place out of thousands at HackCBS 8.0.",
       tags: ["TypeScript", "FastAPI", "Gemini AI", "MongoDB"],
-      color: "bg-[#5FD974]",
-      accentHex: "#5FD974",
+      color: "bg-[#F7D046]",
+      accentHex: "#F7D046",
       badge: "Award Winner",
       githubUrl: "https://github.com/itspriyamsri/project-shield",
       imgSrc: "/Project-SHIELD.png"
@@ -550,8 +620,8 @@ const Projects = () => {
       desc: "Intelligent Recommendation Platform using NLP for personalized resource discovery.",
       fullDesc: "Saksham AI applies Natural Language Processing to build an intelligent recommendation engine. By analyzing user queries and preferences, it dynamically curates and suggests personalized resources, streamlining the discovery process.",
       tags: ["NLP", "Python", "React", "FastAPI"],
-      color: "bg-[#E878A8]",
-      accentHex: "#E878A8",
+      color: "bg-[#A78BFA]",
+      accentHex: "#A78BFA",
       badge: "AI/NLP",
       githubUrl: "https://github.com/itspriyamsri/saksham-ai",
       imgSrc: "/Saksham-AI.png"
@@ -561,8 +631,8 @@ const Projects = () => {
       desc: "LLVM-Based Code Obfuscator. Features C++ string encryption and a Python FastAPI bridge.",
       fullDesc: "CPPCloak is a security-focused compiler tool based on LLVM. It applies advanced obfuscation techniques, including robust C++ string encryption, to protect proprietary source code. The core logic interfaces with a modern Python FastAPI backend for ease of integration.",
       tags: ["C++", "LLVM", "FastAPI", "Compiler"],
-      color: "bg-[#F7D046]",
-      accentHex: "#F7D046",
+      color: "bg-[#FB923C]",
+      accentHex: "#FB923C",
       badge: "Security",
       githubUrl: "https://github.com/itspriyamsri/cppcloak",
       imgSrc: "/CPPCloak.png"
@@ -717,26 +787,36 @@ const Leadership = () => {
   const experiences = [
     {
       title: "3rd Place Winner | HackCBS 8.0",
-      org: "Asia's Largest Student Hackathon",
-      period: "Nov 2024",
+      org: "India's Largest Student Hackathon",
+      period: "Nov 2025",
       color: "bg-[#5BB4E5]",
       cardColor: "bg-[#DDF4FD]",
       icon: <Award size={24} />,
-      desc: "Secured 2nd Runner Up at India's largest student-run hackathon, competing as a 2-person team against senior 4-person teams."
+      desc: "Secured 2nd Runner Up at India's largest student-run hackathon, competing as a 2-person team against senior 4-person teams.",
+      url: "https://drive.google.com/file/d/1sDpKvMRnnj7iTZYAlRVRAqCeO_44zI6z/view?usp=sharing"
     },
     {
       title: "Lead Organizer",
       org: "GDG on Campus SRMCEM",
-      period: "2024 - Present",
+      period: "2025 - Present",
       color: "bg-[#5FD974]",
       cardColor: "bg-[#E6FEEA]",
       icon: <Users size={24} />,
       desc: "Coordinating 15+ tech events and workshops for a 1000+ student community. Co-organized a city-wide AI hackathon across 6 venues."
     },
     {
+      title: "Community Volunteer",
+      org: "DevFest Lucknow",
+      period: "2024 & 2025",
+      color: "bg-[#F7D046]",
+      cardColor: "bg-[#FFF9E5]",
+      icon: <Users size={24} />,
+      desc: "Contributed behind the scenes to organizing DevFest Lucknow: Google's large-scale flagship event and supported the growth of the local developer community."
+    },
+    {
       title: "College Qualifier",
       org: "Smart India Hackathon",
-      period: "2023 & 2024",
+      period: "2024 & 2025",
       color: "bg-[#E878A8]",
       cardColor: "bg-[#FDE7F0]",
       icon: <Zap size={24} />,
@@ -746,26 +826,26 @@ const Leadership = () => {
       title: "Top 105 Nationally",
       org: "Google Solution Challenge 2025",
       period: "Jan 2025",
-      color: "bg-[#F7D046]",
-      cardColor: "bg-[#FFF9E5]",
+      color: "bg-[#A78BFA]",
+      cardColor: "bg-[#ECE6FF]",
       icon: <Globe size={24} />,
       desc: "Led a 4-member team among 1000+ submissions with AetherLearn, an AI-powered platform addressing UN SDG #4."
     },
     {
       title: "Technical Co-Head",
       org: "GDG on Campus SRMCEM",
-      period: "2023 - 2024",
-      color: "bg-[#5BB4E5]",
-      cardColor: "bg-[#DDF4FD]",
+      period: "2024 - 2025",
+      color: "bg-[#FB923C]",
+      cardColor: "bg-[#FFECDD]",
       icon: <Code2 size={24} />,
       desc: "Managed technical infrastructure for 12+ events and delivered sessions on Gemini and GCP to 800+ developers."
     },
     {
       title: "1st Place",
       org: "Zephyre Hackathon",
-      period: "2023",
-      color: "bg-[#5FD974]",
-      cardColor: "bg-[#E6FEEA]",
+      period: "2024",
+      color: "bg-[#5BB4E5]",
+      cardColor: "bg-[#DDF4FD]",
       icon: <Award size={24} />,
       desc: "Won first place as a first-year team of two against multi-disciplinary senior teams."
     }
@@ -794,14 +874,30 @@ const Leadership = () => {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="w-full md:w-[45%]"
               >
-                <PastelCard bgColor={exp.cardColor} className="hover:scale-[1.02] transition-transform duration-300 border-2 border-black shadow-[4px_4px_0px_#000000]">
-                  <span className="text-xs font-black text-black/40 uppercase tracking-widest mb-2 block font-jakarta">{exp.period}</span>
-                  <h3 className="text-2xl font-outfit font-bold text-black mb-1">{exp.title}</h3>
-                  <p className="text-lg font-outfit font-bold text-[#4285F4] mb-4">{exp.org}</p>
-                  <p className="text-base font-jakarta font-medium text-gray-800 leading-relaxed">
-                    {exp.desc}
-                  </p>
-                </PastelCard>
+                {exp.url ? (
+                  <a href={exp.url} target="_blank" rel="noopener noreferrer" className="block h-full group">
+                    <PastelCard bgColor={exp.cardColor} className="relative hover:scale-[1.02] transition-transform duration-300 border-2 border-black shadow-[4px_4px_0px_#000000]">
+                      <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <ExternalLink size={20} className="text-black/40" />
+                      </div>
+                      <span className="text-xs font-black text-black/40 uppercase tracking-widest mb-2 block font-jakarta">{exp.period}</span>
+                      <h3 className="text-2xl font-outfit font-bold text-black mb-1">{exp.title}</h3>
+                      <p className="text-lg font-outfit font-bold text-[#4285F4] mb-4">{exp.org}</p>
+                      <p className="text-base font-jakarta font-medium text-gray-800 leading-relaxed">
+                        {exp.desc}
+                      </p>
+                    </PastelCard>
+                  </a>
+                ) : (
+                  <PastelCard bgColor={exp.cardColor} className="hover:scale-[1.02] transition-transform duration-300 border-2 border-black shadow-[4px_4px_0px_#000000]">
+                    <span className="text-xs font-black text-black/40 uppercase tracking-widest mb-2 block font-jakarta">{exp.period}</span>
+                    <h3 className="text-2xl font-outfit font-bold text-black mb-1">{exp.title}</h3>
+                    <p className="text-lg font-outfit font-bold text-[#4285F4] mb-4">{exp.org}</p>
+                    <p className="text-base font-jakarta font-medium text-gray-800 leading-relaxed">
+                      {exp.desc}
+                    </p>
+                  </PastelCard>
+                )}
               </motion.div>
 
               {/* Node */}
@@ -837,19 +933,21 @@ const CertificationsGrid = () => {
   ];
 
   const mainCerts = [
-    "Google IT Automation with Python",
-    "Google IT Support Professional",
-    "Google Cybersecurity Professional",
-    "Google AI & Prompting Essentials"
+    { name: "Google IT Support Professional", url: "https://coursera.org/share/3d6ad7a55cd893e0685ce6a0f434bda2" },
+    { name: "Google IT Automation with Python", url: "https://coursera.org/share/23a0c5192e9b165d6df51786be0eb34d" },
+    { name: "Google Cybersecurity Professional", url: "https://coursera.org/share/f443624ca83d4c9530fa52e7ceace4ce" },
+    { name: "Google Prompting Essentials", url: "https://coursera.org/share/4307b3a3570ad471e2ae2795b0cd5be9" }
   ];
 
   const designCerts = [
-    "Build Dynamic UI for Websites",
-    "Foundations of UX Design"
+    { name: "Build Dynamic UI for Websites", url: "https://coursera.org/share/63c3587955c4b5efa802326d722e1bc5" },
+    { name: "Foundations of UX Design", url: "https://coursera.org/share/89645acfcad3fc4fcce18d8cf30250eb" },
+    { name: "Google AI Essentials", url: "https://coursera.org/share/c71e747ca3ff369052b5e585150970ac" },
+    { name: "Introduction to Git and GitHub", url: "https://coursera.org/share/2192d1048d6f0cc68e0aaa07238a76d0" }
   ];
 
   return (
-    <SectionWrapper className="py-24 px-10 container mx-auto">
+    <SectionWrapper id="certifications" className="py-24 px-10 container mx-auto">
       <div className="flex flex-col items-center mb-16">
         <h2 className="text-4xl md:text-5xl font-outfit font-bold text-black mb-4">Professional training</h2>
         <div className="h-2 w-24 bg-[#F7D046] border-2 border-black rounded-full shadow-[2px_2px_0px_#000000]"></div>
@@ -859,15 +957,20 @@ const CertificationsGrid = () => {
         {mainCerts.map((cert, idx) => {
           const theme = certColors[idx % certColors.length];
           return (
-            <PastelCard key={cert} bgColor={theme.bg} className="flex flex-col gap-6 hover:scale-105 transition-transform border-2 border-black shadow-[4px_4px_0px_#000000] !rounded-2xl h-full">
-              <div className={`w-12 h-12 ${theme.iconBg} rounded-xl flex items-center justify-center ${theme.icon} border-2 border-black`}>
-                <Award size={24} />
-              </div>
-              <div>
-                <h4 className="font-outfit font-bold text-black text-lg leading-tight">{cert}</h4>
-                <p className={`text-sm ${theme.icon} font-black mt-3 font-jakarta uppercase tracking-wider`}>VERIFIED BY COURSERA</p>
-              </div>
-            </PastelCard>
+            <a href={cert.url} target="_blank" rel="noopener noreferrer" key={cert.name} className="block h-full group">
+              <PastelCard bgColor={theme.bg} className="relative flex flex-col gap-6 hover:scale-105 transition-transform border-2 border-black shadow-[4px_4px_0px_#000000] !rounded-2xl h-full">
+                <div className={`w-12 h-12 ${theme.iconBg} rounded-xl flex items-center justify-center ${theme.icon} border-2 border-black`}>
+                  <Award size={24} />
+                </div>
+                <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <ExternalLink size={20} className="text-black/40" />
+                </div>
+                <div>
+                  <h4 className="font-outfit font-bold text-black text-lg leading-tight">{cert.name}</h4>
+                  <p className={`text-sm ${theme.icon} font-black mt-3 font-jakarta uppercase tracking-wider`}>VERIFIED BY COURSERA</p>
+                </div>
+              </PastelCard>
+            </a>
           );
         })}
       </div>
@@ -888,19 +991,24 @@ const CertificationsGrid = () => {
                   const theme = certColors[(idx + mainCerts.length) % certColors.length];
                   return (
                     <motion.div
-                      key={cert}
+                      key={cert.name}
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                     >
-                      <PastelCard bgColor={theme.bg} className="flex flex-col gap-6 hover:scale-105 transition-transform border-2 border-black shadow-[4px_4px_0px_#000000] !rounded-2xl h-full">
-                        <div className={`w-12 h-12 ${theme.iconBg} rounded-xl flex items-center justify-center ${theme.icon} border-2 border-black`}>
-                          <Award size={24} />
-                        </div>
-                        <div>
-                          <h4 className="font-outfit font-bold text-black text-lg leading-tight">{cert}</h4>
-                          <p className={`text-sm ${theme.icon} font-black mt-3 font-jakarta uppercase tracking-wider`}>VERIFIED BY COURSERA</p>
-                        </div>
-                      </PastelCard>
+                      <a href={cert.url} target="_blank" rel="noopener noreferrer" className="block h-full group">
+                        <PastelCard bgColor={theme.bg} className="relative flex flex-col gap-6 hover:scale-105 transition-transform border-2 border-black shadow-[4px_4px_0px_#000000] !rounded-2xl h-full">
+                          <div className={`w-12 h-12 ${theme.iconBg} rounded-xl flex items-center justify-center ${theme.icon} border-2 border-black`}>
+                            <Award size={24} />
+                          </div>
+                          <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <ExternalLink size={20} className="text-black/40" />
+                          </div>
+                          <div>
+                            <h4 className="font-outfit font-bold text-black text-lg leading-tight">{cert.name}</h4>
+                            <p className={`text-sm ${theme.icon} font-black mt-3 font-jakarta uppercase tracking-wider`}>VERIFIED BY COURSERA</p>
+                          </div>
+                        </PastelCard>
+                      </a>
                     </motion.div>
                   );
                 })}
@@ -993,8 +1101,9 @@ const Footer = () => {
               <motion.a 
                 whileHover={{ x: -2, y: -2, boxShadow: "6px 6px 0px #000000" }}
                 whileTap={{ scale: 0.95 }}
-                href="mailto:itspriyamsri@gmail.com"
-                className="inline-flex items-center gap-3 px-8 py-3 bg-[#4285F4] text-white border-2 border-black rounded-xl font-bold font-jakarta shadow-[4px_4px_0px_#000000] transition-all"
+                transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                href="mailto:priyamsrivastava33347@gmail.com"
+                className="inline-flex items-center gap-3 px-8 py-3 bg-[#4285F4] text-white border-2 border-black rounded-xl font-bold font-jakarta shadow-[4px_4px_0px_#000000]"
               >
                 Email Me <Terminal size={20} />
               </motion.a>
@@ -1002,7 +1111,7 @@ const Footer = () => {
 
             <div className="flex gap-4">
               {[
-                { icon: <Terminal size={20} />, href: "mailto:itspriyamsri@gmail.com" },
+                { icon: <Terminal size={20} />, href: "mailto:priyamsrivastava33347@gmail.com" },
                 { icon: <Github size={20} />, href: "https://github.com/itspriyamsri" },
                 { icon: <Linkedin size={20} />, href: "https://linkedin.com/in/itspriyamsri" }
               ].map((social, idx) => (
@@ -1046,7 +1155,8 @@ const Footer = () => {
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-[#fafafa] selection:bg-[#4285F4] selection:text-white">
+    <div className="min-h-screen bg-[#fafafa] selection:bg-[#4285F4] selection:text-white relative">
+      <ScrollIndicator />
       {/* Background Pattern */}
       <div className="fixed inset-0 z-0 opacity-[0.03] pointer-events-none" 
         style={{ backgroundImage: `radial-gradient(#000 1px, transparent 0)`, backgroundSize: '40px 40px' }}
@@ -1072,7 +1182,8 @@ export default function App() {
               <motion.a 
                 whileHover={{ x: -2, y: -2, boxShadow: "8px 8px 0px #4285F4" }}
                 whileTap={{ scale: 0.95 }}
-                href="mailto:itspriyamsri@gmail.com"
+                transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                href="mailto:priyamsrivastava33347@gmail.com"
                 className="px-10 py-5 bg-black text-white border-2 border-black rounded-xl font-bold font-jakarta text-lg shadow-[4px_4px_0px_#4285F4] flex items-center gap-3"
               >
                 Get in Touch
@@ -1080,6 +1191,7 @@ export default function App() {
               <motion.a 
                 whileHover={{ x: -2, y: -2, boxShadow: "8px 8px 0px #000000" }}
                 whileTap={{ scale: 0.95 }}
+                transition={{ type: "spring", stiffness: 400, damping: 25 }}
                 href="https://drive.google.com/file/d/1i6RlG9hcbE8U8Htkj2s6WlB-RX_Vuux0/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
