@@ -571,84 +571,87 @@ const Projects = () => {
   const mainProjects: Project[] = [
     {
       name: "Lucknow Tech Events",
-      desc: "A full-stack, open-source event aggregator for the Lucknow tech scene — featuring an admin dashboard, IST-aware event scheduling, and a Render-hosted backend.",
-      fullDesc: "Built a production-grade MERN stack platform to surface and manage tech events in Lucknow. Features an admin mission-control dashboard for event CRUD with datetime-local editing (IST-aware), a publicly accessible event feed, and a persistent Express backend on Render with a 20-second heartbeat to prevent cold-starts. Deployed frontend on Vercel. Fully open-source.",
-      tags: ["React", "Node.js", "Express", "MongoDB", "Vercel", "Render"],
+      desc: "A full-stack, open-source event aggregator for the Lucknow tech scene — powered by an AI discovery pipeline.",
+      fullDesc: "Lucknow Tech Events is an automated platform using a Gemini 3 Flash AI agent to discover and extract tech events. It normalizes data via an ingestion pipeline and publishes them without manual curation. Built with Next.js, FastAPI, PostgreSQL, and Celery.",
+      tags: ["Next.js", "FastAPI", "Python", "PostgreSQL", "Gemini AI"],
       color: "bg-[#5BB4E5]",
       accentHex: "#5BB4E5",
       badge: "Full-Stack",
-      githubUrl: "https://github.com/itspriyamsri/lucknow-tech-events",
-      liveUrl: "https://lucknow-tech-events.vercel.app",
+      githubUrl: "https://github.com/ItsPriyamSri/Lucknow-events",
+      liveUrl: "https://lucknow-events.vercel.app/",
       imgSrc: "/Lucknow-Events.png"
     },
     {
       name: "Obsidian Eye",
       desc: "AI-powered media fingerprinting platform detecting digital piracy with dual-signal perceptual hashing and a Gemini-AI DMCA generator.",
-      fullDesc: "Obsidian Eye is an agentic AI platform for digital media rights enforcement. It combines perceptual image hashing with an AI fingerprinting pipeline to identify unauthorized copies across the web. A Gemini-powered backend auto-generates DMCA takedown notices. Built with a Next.js frontend deployed on Vercel and a FastAPI Python backend.",
-      tags: ["Next.js", "FastAPI", "Python", "Gemini AI", "Vercel", "Docker"],
+      fullDesc: "Obsidian Eye is an agentic AI platform for digital media rights enforcement. It combines perceptual image hashing with Gemini Embedding 2 to identify unauthorized copies. It uses YouTube and Google Custom Search APIs for discovery, and auto-generates DMCA takedown notices using Gemini 2.5 Flash.",
+      tags: ["Next.js", "Node.js", "Express", "Gemini AI", "MongoDB"],
       color: "bg-[#5FD974]",
       accentHex: "#5FD974",
       badge: "AI Agent",
-      githubUrl: "https://github.com/itspriyamsri/obsidian-eye",
-      liveUrl: "https://obsidian-eye.vercel.app",
+      githubUrl: "https://github.com/ItsPriyamSri/Project-OBSIDIAN-EYE",
+      liveUrl: "https://obsidian-eye.vercel.app/",
       imgSrc: "/Obsidian-EYE.png"
     },
     {
       name: "AetherLearn",
-      desc: "AI Learning Platform with Docker containerization and scalable backend. Top 105 GSC.",
-      fullDesc: "AetherLearn is an AI-powered educational platform designed to provide accessible learning resources. It uses Docker for containerized deployment, ensuring a scalable and resilient backend architecture. Recognized nationally by ranking in the Top 105 for the Google Solution Challenge 2025.",
-      tags: ["Docker", "Firebase", "Node.js", "React"],
+      desc: "AI-Powered Learning Dashboard with Universal Search and intelligent flashcard generation using Gemini-2.0-flash.",
+      fullDesc: "AetherLearn is an AI-powered educational platform designed to provide accessible learning resources. It features an adaptive dashboard, universal search via Google Custom Search API, and a robust flashcard generator powered by Gemini-2.0-flash. Containerized using Docker and hosted on Google Cloud Run.",
+      tags: ["Docker", "Google Cloud", "Gemini AI", "React", "MongoDB"],
       color: "bg-[#E878A8]",
       accentHex: "#E878A8",
       badge: "Top 105",
-      githubUrl: "https://github.com/itspriyamsri/aether-learn",
+      githubUrl: "https://github.com/ItsPriyamSri/Aether-Learn",
+      liveUrl: "https://itspriyamsri.github.io/Aether-Learn/",
       imgSrc: "/Aether-Learn.png"
     },
     {
       name: "Project SHIELD",
-      desc: "IP Protection Platform monitoring 100+ sources. Automated DMCA generator via Gemini AI. 3rd Place @ HackCBS.",
-      fullDesc: "Project SHIELD offers automated intellectual property protection. It scrapes and monitors over 100 sources for copyright infringement, leveraging Gemini AI to automatically generate and format DMCA takedown notices. This project secured the 3rd Place out of thousands at HackCBS 8.0.",
-      tags: ["TypeScript", "FastAPI", "Gemini AI", "MongoDB"],
+      desc: "Advanced AI-Powered Copyright Protection & Automated Takedown System using Google Gemini Vision.",
+      fullDesc: "Project SHIELD offers automated intellectual property protection. It utilizes Google Gemini Vision and Perplexity AI to monitor the web for copyright infringement, generating automated DMCA takedown notices. Built with Next.js, FastAPI, and MongoDB.",
+      tags: ["Next.js", "FastAPI", "Gemini AI", "MongoDB", "Python"],
       color: "bg-[#F7D046]",
       accentHex: "#F7D046",
       badge: "Award Winner",
-      githubUrl: "https://github.com/itspriyamsri/project-shield",
+      githubUrl: "https://github.com/ItsPriyamSri/Project-SHIELD",
+      liveUrl: "https://project-shield-delta.vercel.app/",
       imgSrc: "/Project-SHIELD.png"
     },
     {
       name: "Saksham AI",
-      desc: "Intelligent Recommendation Platform using NLP for personalized resource discovery.",
-      fullDesc: "Saksham AI applies Natural Language Processing to build an intelligent recommendation engine. By analyzing user queries and preferences, it dynamically curates and suggests personalized resources, streamlining the discovery process.",
-      tags: ["NLP", "Python", "React", "FastAPI"],
+      desc: "AI-powered, inclusive internship matching platform with voice-enabled multilingual input.",
+      fullDesc: "Saksham AI applies Natural Language Processing and rule-based matching to build an intelligent recommendation engine for underserved students. It features hybrid filtering, explainable AI for recommendations, and skill-gap analysis.",
+      tags: ["Next.js", "Node.js", "MongoDB", "NLP", "Firebase"],
       color: "bg-[#A78BFA]",
       accentHex: "#A78BFA",
       badge: "AI/NLP",
-      githubUrl: "https://github.com/itspriyamsri/saksham-ai",
+      githubUrl: "https://github.com/ItsPriyamSri/Saksham-AI",
+      liveUrl: "https://saksham-ai-inky.vercel.app/",
       imgSrc: "/Saksham-AI.png"
     },
     {
       name: "CPPCloak",
-      desc: "LLVM-Based Code Obfuscator. Features C++ string encryption and a Python FastAPI bridge.",
-      fullDesc: "CPPCloak is a security-focused compiler tool based on LLVM. It applies advanced obfuscation techniques, including robust C++ string encryption, to protect proprietary source code. The core logic interfaces with a modern Python FastAPI backend for ease of integration.",
-      tags: ["C++", "LLVM", "FastAPI", "Compiler"],
+      desc: "Production-ready LLVM-based C/C++ object file obfuscator with a FastAPI bridge.",
+      fullDesc: "CPPCloak is a security-focused compiler tool based on LLVM 20.0+. It applies advanced obfuscation techniques, including robust C++ string encryption and bogus code insertion, with an interactive web interface powered by React and FastAPI.",
+      tags: ["C++", "LLVM", "FastAPI", "React", "Python"],
       color: "bg-[#FB923C]",
       accentHex: "#FB923C",
       badge: "Security",
-      githubUrl: "https://github.com/itspriyamsri/cppcloak",
+      githubUrl: "https://github.com/ItsPriyamSri/CppCloak",
       imgSrc: "/CPPCloak.png"
     }
   ];
 
   const sandboxProjects: Project[] = [
     {
-      name: "FluxSort",
-      desc: "Cross-platform Python automation script with a logging/revert system for intelligent file directory management.",
-      fullDesc: "FluxSort is a comprehensive Python automation tool that intelligently organizes and manages file directories across different operating systems. It includes a robust logging mechanism and a revert system to ensure safe operations.",
+      name: "Flux-Sort",
+      desc: "CLI-first tool for organizing cluttered directories with a terminal-based interface.",
+      fullDesc: "Flux-Sort is a Python automation tool that intelligently organizes file directories. It features an interactive TUI-like interface, preview-first workflow, and a robust undo system to ensure safe operations.",
       tags: ["Python", "Automation", "CLI"],
       color: "bg-[#DDF4FD]",
       accentHex: "#5BB4E5",
       badge: "Sandbox",
-      githubUrl: "https://github.com/itspriyamsri/fluxsort"
+      githubUrl: "https://github.com/ItsPriyamSri/Flux-Sort"
     },
     {
       name: "Dungeon Escape",
@@ -658,27 +661,29 @@ const Projects = () => {
       color: "bg-[#E6FEEA]",
       accentHex: "#5FD974",
       badge: "Sandbox",
-      githubUrl: "https://github.com/itspriyamsri/dungeon-escape"
+      githubUrl: "https://github.com/ItsPriyamSri/Dungeon-Escape"
     },
     {
-      name: "Project Sentinel",
-      desc: "Python-based system resource monitor featuring a CLI interface inspired by Linux btop.",
-      fullDesc: "Project Sentinel provides real-time monitoring of system resources using Python. Its rich CLI interface draws inspiration from Linux's btop, delivering performance metrics in an easy-to-read, terminal-friendly layout.",
-      tags: ["Python", "System", "CLI"],
+      name: "MedScam-Shield",
+      desc: "AI-powered platform detecting medical billing fraud using OCR and CGHS rate cards.",
+      fullDesc: "MedScam-Shield empowers patients to dispute medical overcharges. It uses Google Gemini 2.5 Flash for OCR to detect ghost charges and compares bills against government rate cards, generating formal Consumer Protection Act dispute letters.",
+      tags: ["Next.js", "React", "Gemini AI", "Tailwind CSS"],
       color: "bg-[#FDE7F0]",
       accentHex: "#E878A8",
       badge: "Sandbox",
-      githubUrl: "https://github.com/itspriyamsri/project-sentinel"
+      githubUrl: "https://github.com/ItsPriyamSri/MedScam-Shield",
+      liveUrl: "https://med-scam-shield.vercel.app/"
     },
     {
       name: "AppSentinel",
-      desc: "TypeScript front-end prototype designed to scan and match security certificates of banking APKs.",
-      fullDesc: "AppSentinel is a FinTech security prototype built with TypeScript. It provides a clean interface to scan, verify, and match security certificates for Android banking applications to detect tampering.",
-      tags: ["TypeScript", "Security", "FinTech"],
+      desc: "TypeScript front-end platform designed to detect fraudulent banking applications.",
+      fullDesc: "AppSentinel is a FinTech security platform built with TypeScript and Next.js. It provides a clean interface to scan, verify, and match security certificates for Android banking applications to detect tampering.",
+      tags: ["TypeScript", "Next.js", "Security", "FinTech"],
       color: "bg-[#FFF9E5]",
       accentHex: "#F7D046",
       badge: "Sandbox",
-      githubUrl: "https://github.com/itspriyamsri/app-sentinel"
+      githubUrl: "https://github.com/ItsPriyamSri/AppSentinel",
+      liveUrl: "https://app-sentinel.vercel.app/"
     }
   ];
 
