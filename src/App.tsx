@@ -684,6 +684,27 @@ const Projects = () => {
       badge: "Sandbox",
       githubUrl: "https://github.com/ItsPriyamSri/AppSentinel",
       liveUrl: "https://app-sentinel.vercel.app/"
+    },
+    {
+      name: "Cadence",
+      desc: "Premium productivity PWA that celebrates starting tasks over completing them.",
+      fullDesc: "Cadence is a premium productivity PWA that features a drag-and-drop daily calendar, status flow for tasks, and a quick-capture brain dump. Built with Next.js 15, Tailwind CSS, Zustand, and Firebase for real-time synchronization.",
+      tags: ["Next.js", "React", "Firebase", "Zustand", "Tailwind"],
+      color: "bg-[#DDF4FD]",
+      accentHex: "#5BB4E5",
+      badge: "Sandbox",
+      githubUrl: "https://github.com/ItsPriyamSri/Cadence",
+      liveUrl: "https://cadence-six-lac.vercel.app/"
+    },
+    {
+      name: "ExamSniper",
+      desc: "AI-powered PYQ analysis tool powered by Gemini 2.5 Flash-Lite with Google Search grounding.",
+      fullDesc: "ExamSniper is an AI-powered prediction tool for Indian universities. It uses Gemini 2.5 Flash-Lite with Google Search grounding to search for actual past papers and identify patterns across 4-5 years of exam history, providing a 3-tier priority study guide.",
+      tags: ["React", "Express", "MongoDB", "Gemini AI"],
+      color: "bg-[#E6FEEA]",
+      accentHex: "#5FD974",
+      badge: "Sandbox",
+      githubUrl: "https://github.com/ItsPriyamSri/Study-Agent"
     }
   ];
 
