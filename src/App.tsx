@@ -281,12 +281,13 @@ const Hero = () => {
         animate="visible"
         className="z-10 max-w-5xl pointer-events-none"
       >
-        <motion.span 
-          variants={itemVariants}
-          className="inline-block px-4 py-1.5 mb-8 text-xs font-black tracking-[0.2em] text-black uppercase bg-[#F7D046] border-2 border-black rounded-full font-jakarta shadow-[3px_3px_0px_#000000]"
-        >
-          🚀 Open to SWE / AI Internships · Summer 2026
-        </motion.span>
+        <motion.div variants={itemVariants} className="mb-8 pointer-events-auto">
+          <span 
+            className="inline-block px-4 py-1.5 text-xs font-black tracking-[0.2em] text-black uppercase bg-[#F7D046] border-2 border-black rounded-full font-jakarta shadow-[3px_3px_0px_#000000] hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_#000000] transition-all cursor-default"
+          >
+            🚀 Open to SWE / AI Internships · Summer 2026
+          </span>
+        </motion.div>
         
         <motion.h1 
           variants={itemVariants}
@@ -1167,7 +1168,7 @@ const Footer = () => {
             © 2026 PRIYAM SRIVASTAVA
           </div>
           
-          <div className="px-4 py-1.5 bg-[#F7D046] border-2 border-black rounded-full text-[10px] font-black uppercase tracking-[0.2em] text-black shadow-[3px_3px_0px_#000000]">
+          <div className="px-4 py-1.5 bg-[#F7D046] border-2 border-black rounded-full text-[10px] font-black uppercase tracking-[0.2em] text-black shadow-[3px_3px_0px_#000000] hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_#000000] transition-all cursor-default">
             AVAILABLE FOR 2026 INTERNSHIPS
           </div>
 
