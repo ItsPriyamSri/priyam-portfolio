@@ -690,8 +690,8 @@ const Projects = () => {
       desc: "Premium productivity PWA that celebrates starting tasks over completing them.",
       fullDesc: "Cadence is a premium productivity PWA that features a drag-and-drop daily calendar, status flow for tasks, and a quick-capture brain dump. Built with Next.js 15, Tailwind CSS, Zustand, and Firebase for real-time synchronization.",
       tags: ["Next.js", "React", "Firebase", "Zustand", "Tailwind"],
-      color: "bg-[#DDF4FD]",
-      accentHex: "#5BB4E5",
+      color: "bg-[#F3E8FF]",
+      accentHex: "#A78BFA",
       badge: "Sandbox",
       githubUrl: "https://github.com/ItsPriyamSri/Cadence",
       liveUrl: "https://cadence-six-lac.vercel.app/"
@@ -701,8 +701,8 @@ const Projects = () => {
       desc: "AI-powered PYQ analysis tool powered by Gemini 2.5 Flash-Lite with Google Search grounding.",
       fullDesc: "ExamSniper is an AI-powered prediction tool for Indian universities. It uses Gemini 2.5 Flash-Lite with Google Search grounding to search for actual past papers and identify patterns across 4-5 years of exam history, providing a 3-tier priority study guide.",
       tags: ["React", "Express", "MongoDB", "Gemini AI"],
-      color: "bg-[#E6FEEA]",
-      accentHex: "#5FD974",
+      color: "bg-[#FFEDD5]",
+      accentHex: "#FB923C",
       badge: "Sandbox",
       githubUrl: "https://github.com/ItsPriyamSri/Study-Agent"
     }
@@ -724,8 +724,8 @@ const Projects = () => {
       >
         {mainProjects.map((p, idx) => (
           <motion.div key={idx} variants={itemVariants}>
-            <div onClick={() => setSelectedProject(p)} className="cursor-pointer h-full">
-              <BrutalistCard bgColor={p.color} className="h-full flex flex-col transition-transform hover:-translate-y-1" hasMockup={!!p.imgSrc} imgSrc={p.imgSrc}>
+            <div onClick={() => setSelectedProject(p)} className="cursor-pointer h-full group">
+              <BrutalistCard bgColor={p.color} className="h-full flex flex-col" hasMockup={!!p.imgSrc} imgSrc={p.imgSrc}>
                 <div className="flex justify-between items-start mb-4">
                   <h3 className="text-2xl font-outfit font-bold text-black">{p.name}</h3>
                   <span className="px-3 py-1 bg-white border-2 border-black text-[10px] font-black rounded-full uppercase tracking-tighter shadow-[2px_2px_0px_#000000] hover:shadow-[4px_4px_0px_#000000] hover:-translate-y-0.5 transition-all whitespace-nowrap ml-2">{p.badge}</span>
@@ -739,8 +739,8 @@ const Projects = () => {
                   ))}
                   {p.tags.length > 4 && <span className="text-[10px] font-black uppercase tracking-widest px-2 py-1 bg-white/50 border border-black rounded hover:-translate-y-0.5 hover:bg-white hover:shadow-[2px_2px_0px_#000000] transition-all">+{p.tags.length - 4}</span>}
                 </div>
-                <div className="flex items-center gap-2 font-black text-black uppercase text-sm tracking-widest group mt-auto">
-                  View Details <ExternalLink size={18} className="group-hover:translate-x-1 transition-transform" />
+                <div className="flex items-center gap-2 font-black text-black/75 uppercase text-sm tracking-widest mt-auto group-hover:text-black transition-colors">
+                  View Details <ExternalLink size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                 </div>
               </BrutalistCard>
             </div>
@@ -766,8 +766,8 @@ const Projects = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: idx * 0.1 }}
                   >
-                    <div onClick={() => setSelectedProject(p)} className="cursor-pointer h-full">
-                      <BrutalistCard bgColor={p.color} className="h-full flex flex-col transition-transform hover:-translate-y-1">
+                    <div onClick={() => setSelectedProject(p)} className="cursor-pointer h-full group">
+                      <BrutalistCard bgColor={p.color} className="h-full flex flex-col">
                         <h4 className="text-xl font-outfit font-bold text-black mb-2">{p.name}</h4>
                         <p className="text-sm font-jakarta font-medium text-gray-800 mb-4 flex-grow">{p.desc}</p>
                         <div className="flex flex-wrap gap-2 mb-4">
@@ -775,8 +775,8 @@ const Projects = () => {
                             <span key={t} className="text-[10px] font-black uppercase tracking-widest px-2 py-0.5 bg-white/50 border border-black rounded hover:-translate-y-0.5 hover:bg-white hover:shadow-[2px_2px_0px_#000000] transition-all">{t}</span>
                           ))}
                         </div>
-                        <div className="flex items-center gap-1 font-black text-black uppercase text-xs tracking-widest group mt-auto">
-                          View Details <ExternalLink size={14} className="group-hover:translate-x-1 transition-transform" />
+                        <div className="flex items-center gap-1 font-black text-black/75 uppercase text-xs tracking-widest mt-auto group-hover:text-black transition-colors">
+                          View Details <ExternalLink size={14} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                         </div>
                       </BrutalistCard>
                     </div>
