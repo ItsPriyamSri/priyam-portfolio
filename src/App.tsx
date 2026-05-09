@@ -507,7 +507,7 @@ const ProjectModal: React.FC<{
       >
         <div className="flex justify-between items-start p-6 pb-2 border-b-2 border-black/10">
           <div>
-            <span className="px-3 py-1 bg-white border-2 border-black text-[10px] font-black rounded-full uppercase tracking-tighter shadow-[2px_2px_0px_#000000] mb-3 inline-block">
+            <span className="px-3 py-1 bg-white border-2 border-black text-[10px] font-black rounded-full uppercase tracking-tighter shadow-[2px_2px_0px_#000000] hover:shadow-[4px_4px_0px_#000000] hover:-translate-y-0.5 transition-all mb-3 inline-block">
               {project.badge}
             </span>
             <h3 className="text-3xl sm:text-4xl font-outfit font-bold text-black leading-tight">
@@ -531,7 +531,7 @@ const ProjectModal: React.FC<{
             <h4 className="text-sm font-outfit font-black uppercase tracking-widest text-black/40 mb-3">Tech Stack</h4>
             <div className="flex flex-wrap gap-2">
               {project.tags.map(t => (
-                <span key={t} className="text-xs font-black uppercase tracking-widest px-3 py-1.5 bg-gray-100 border border-black/20 rounded-md">
+                <span key={t} className="text-xs font-black uppercase tracking-widest px-3 py-1.5 bg-gray-100 border border-black/20 rounded-md hover:-translate-y-0.5 hover:border-black hover:shadow-[2px_2px_0px_#000000] transition-all">
                   {t}
                 </span>
               ))}
@@ -707,16 +707,16 @@ const Projects = () => {
               <BrutalistCard bgColor={p.color} className="h-full flex flex-col transition-transform hover:-translate-y-1" hasMockup={!!p.imgSrc} imgSrc={p.imgSrc}>
                 <div className="flex justify-between items-start mb-4">
                   <h3 className="text-2xl font-outfit font-bold text-black">{p.name}</h3>
-                  <span className="px-3 py-1 bg-white border-2 border-black text-[10px] font-black rounded-full uppercase tracking-tighter shadow-[2px_2px_0px_#000000] whitespace-nowrap ml-2">{p.badge}</span>
+                  <span className="px-3 py-1 bg-white border-2 border-black text-[10px] font-black rounded-full uppercase tracking-tighter shadow-[2px_2px_0px_#000000] hover:shadow-[4px_4px_0px_#000000] hover:-translate-y-0.5 transition-all whitespace-nowrap ml-2">{p.badge}</span>
                 </div>
                 <p className="text-black font-jakarta font-semibold mb-6 flex-grow leading-snug">
                   {p.desc}
                 </p>
                 <div className="flex flex-wrap gap-2 mb-6">
                   {p.tags.slice(0, 4).map(t => (
-                    <span key={t} className="text-[10px] font-black uppercase tracking-widest px-2 py-1 bg-white/50 border border-black rounded">{t}</span>
+                    <span key={t} className="text-[10px] font-black uppercase tracking-widest px-2 py-1 bg-white/50 border border-black rounded hover:-translate-y-0.5 hover:bg-white hover:shadow-[2px_2px_0px_#000000] transition-all">{t}</span>
                   ))}
-                  {p.tags.length > 4 && <span className="text-[10px] font-black uppercase tracking-widest px-2 py-1 bg-white/50 border border-black rounded">+{p.tags.length - 4}</span>}
+                  {p.tags.length > 4 && <span className="text-[10px] font-black uppercase tracking-widest px-2 py-1 bg-white/50 border border-black rounded hover:-translate-y-0.5 hover:bg-white hover:shadow-[2px_2px_0px_#000000] transition-all">+{p.tags.length - 4}</span>}
                 </div>
                 <div className="flex items-center gap-2 font-black text-black uppercase text-sm tracking-widest group mt-auto">
                   View Details <ExternalLink size={18} className="group-hover:translate-x-1 transition-transform" />
@@ -751,7 +751,7 @@ const Projects = () => {
                         <p className="text-sm font-jakarta font-medium text-gray-800 mb-4 flex-grow">{p.desc}</p>
                         <div className="flex flex-wrap gap-2 mb-4">
                           {p.tags.map(t => (
-                            <span key={t} className="text-[10px] font-black uppercase tracking-widest px-2 py-0.5 bg-white/50 border border-black rounded">{t}</span>
+                            <span key={t} className="text-[10px] font-black uppercase tracking-widest px-2 py-0.5 bg-white/50 border border-black rounded hover:-translate-y-0.5 hover:bg-white hover:shadow-[2px_2px_0px_#000000] transition-all">{t}</span>
                           ))}
                         </div>
                         <div className="flex items-center gap-1 font-black text-black uppercase text-xs tracking-widest group mt-auto">
@@ -816,7 +816,8 @@ const Leadership = () => {
       color: "bg-[#F7D046]",
       cardColor: "bg-[#FFF9E5]",
       icon: <Users size={24} />,
-      desc: "Contributed behind the scenes to organizing DevFest Lucknow: Google's large-scale flagship event and supported the growth of the local developer community."
+      desc: "Contributed behind the scenes to organizing DevFest Lucknow: Google's large-scale flagship event and supported the growth of the local developer community.",
+      url: "https://drive.google.com/file/d/1AAtT1OYVw9Fd_nzWJM3rO1OKR03kr-jR/view?usp=drivesdk"
     },
     {
       title: "College Qualifier",
@@ -834,7 +835,8 @@ const Leadership = () => {
       color: "bg-[#A78BFA]",
       cardColor: "bg-[#ECE6FF]",
       icon: <Globe size={24} />,
-      desc: "Led a 4-member team among 1000+ submissions with AetherLearn, an AI-powered platform addressing UN SDG #4."
+      desc: "Led a 4-member team among 1000+ submissions with AetherLearn, an AI-powered platform addressing UN SDG #4.",
+      url: "https://drive.google.com/file/d/1MvjVXvmRrLIK0c_Lt2jw9w9_eUjNmNiR/view?usp=drivesdk"
     },
     {
       title: "Technical Co-Head",
