@@ -13,7 +13,8 @@ import {
   Users,
   Award,
   Globe,
-  X
+  X,
+  Send
 } from 'lucide-react';
 
 // --- Typewriter Hook ---
@@ -1214,7 +1215,7 @@ export default function App() {
                 href="mailto:priyamsrivastava33347@gmail.com"
                 className="px-10 py-5 bg-black text-white border-2 border-black rounded-xl font-bold font-jakarta text-lg shadow-[4px_4px_0px_#4285F4] flex items-center gap-3"
               >
-                Get in Touch
+                <Send size={24} /> Get in Touch
               </motion.a>
               <motion.a 
                 whileHover={{ x: -2, y: -2, boxShadow: "8px 8px 0px #000000" }}
@@ -1223,7 +1224,7 @@ export default function App() {
                 href="https://drive.google.com/file/d/1i6RlG9hcbE8U8Htkj2s6WlB-RX_Vuux0/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-10 py-5 bg-transparent text-black border-2 border-black rounded-xl font-bold font-jakarta text-lg shadow-[4px_4px_0px_#000000] flex items-center gap-3"
+                className="px-10 py-5 bg-white text-black border-2 border-black rounded-xl font-bold font-jakarta text-lg shadow-[4px_4px_0px_#000000] flex items-center gap-3"
               >
                 <Download size={24} /> Resume
               </motion.a>
